@@ -1,0 +1,191 @@
+{
+  "entries": [
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/clean-control.expected.json",
+      "sha256": "6007d8a6619903bfc54ee5664fc8b3acab979882691dc03fc61c9abf34f4d976"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/clean-control.md",
+      "sha256": "04fe8cc55b27599a0bc5942d2f599125aff6c67c029e619157d6b3f0492fcc4a"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/mech-violations.expected.json",
+      "sha256": "886f8a247b2e23085b0f6dc984ed0bcc5c11dbf454219418c735d0d80b1dc563"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/mech-violations.md",
+      "sha256": "b35195070ca028a605e31ab53609910507e15f775071a31b2a9d812594f27c39"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/messy-real-world.expected.json",
+      "sha256": "72c58c9602e4529f766397ece7bcf750dd1aa68caf0fb2c75df60528d85bc1c4"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/messy-real-world.md",
+      "sha256": "bba5e10b0fe7e413531d35efd78135a6e3cc686db1c755cb6cf972409751160d"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/mixed.expected.json",
+      "sha256": "30491170864bf0d596a75ee0800143facf6b7fe6c09faf0c7c599dd3117e3298"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/mixed.md",
+      "sha256": "e5a96318cd992d61e07d7a2e323c3e93095b77fb96206f86448bb4cdf32358fb"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/regression-w1-rule-i.expected.json",
+      "sha256": "c3f60aade3e11002460e067122793e09d4204d237100ef01ba960e77128cfa7e"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/regression-w1-rule-i.md",
+      "sha256": "1d2556bb16813904a23cf97acda74ec0a3459401162b867c56d1a9c6635c553a"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/regression-w2-rule-b.expected.json",
+      "sha256": "b16906e349d051d64ea82f938d7751e4c9350f34ddbdac135ffc42a33f50730b"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/regression-w2-rule-b.md",
+      "sha256": "6598572948cddee04ac43a1459642533b2efc1667f34f55cb0997cd575e88fe6"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/regression-w3-rule-g.expected.json",
+      "sha256": "2df5c5f495c8f4e9ebd01eaf1d013690e288005450b92e2dbd26094896e51b4e"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/regression-w3-rule-g.md",
+      "sha256": "b6da45ebbe9c2fa3b843ce538f7ff0b0b99b2a2ef686a78e0c16f423734b974f"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/regression-w4-rule-a.expected.json",
+      "sha256": "bf508353f172023682fc72162d84620ad7ad4f914a5348aa890714588dd6ef00"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/regression-w4-rule-a.md",
+      "sha256": "ddd76ee9ef1eb31b9fa6953f69b3c59e425cf58107dff21519f6cdb8c1d48512"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/regression-w5-rule-05-d.expected.json",
+      "sha256": "37e69498e07d6e0c6f519d0a9e3712ccadd4b3314e4d5dabf382b203afa1878a"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/regression-w5-rule-05-d.md",
+      "sha256": "11bee96d5710ac5fe7ec9257f0c415cbcb58f778a51aeb3796d0153439dff641"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/struct-violations.expected.json",
+      "sha256": "2cf20d7e4a3cefebc453e91f22991e97ee05daf55a95c67365f3994a0d70d58f"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/fixture-prose/struct-violations.md",
+      "sha256": "b4325346c16555bc7c82ff76d62704c9b4eff48f8e7a2d0e26b02ff050557ef3"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/revision-prompt.md",
+      "sha256": "08b50ab2c4aba0bb4af8470c772247628dab7b1e6fe68ce519e934efac4e9e55"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".agent-style/skills/style-review/references/rule-detectors.md",
+      "sha256": "1c258000201dfdb925a6da7d20c473b26d1cad7872002b7bcf3233a17b66a2c7"
+    },
+    {
+      "covered_surfaces": [
+        "claude-code"
+      ],
+      "kind": "file",
+      "path": ".claude/skills/style-review/SKILL.md",
+      "sha256": "0d4d871f692720aed9c155ecab7707617317de903af3cbf66f827c5f090a252f"
+    }
+  ],
+  "generated_by": "agent-style 0.4.2",
+  "schema_version": 1,
+  "tool": "style-review"
+}
