@@ -30,9 +30,8 @@ export default defineAstroPaperConfig({
   },
   socials: [
     { name: "github", url: "https://github.com/vebb374" },
-    // TODO: your real LinkedIn URL
-    { name: "linkedin", url: "https://www.linkedin.com/in/chaitanya-krishna/" },
-    { name: "mail", url: "mailto:princechaitu21@gmail.com" },
+    { name: "linkedin", url: "https://www.linkedin.com/in/chaitanya-krishna-371859176/" },
+    { name: "mail", url: "mailto:yendrapallichaitanya@proton.me" },
   ],
   shareLinks: [
     { name: "linkedin", url: "https://www.linkedin.com/sharing/share-offsite/?url=" },
