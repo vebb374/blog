@@ -1,0 +1,66 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Chaitanya Krishna" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=e6]:
+        - list [ref=e7]:
+          - listitem [ref=e8]:
+            - link "Posts" [ref=e9] [cursor=pointer]:
+              - /url: /posts/
+          - listitem [ref=e10]:
+            - link "Tags" [ref=e11] [cursor=pointer]:
+              - /url: /tags/
+          - listitem [ref=e12]:
+            - link "About" [ref=e13] [cursor=pointer]:
+              - /url: /about/
+          - listitem [ref=e14]:
+            - link "Archives" [ref=e15] [cursor=pointer]:
+              - /url: /archives/
+          - listitem [ref=e20]:
+            - link "Search" [ref=e21] [cursor=pointer]:
+              - /url: /search/
+          - listitem [ref=e26]:
+            - button "dark" [ref=e27] [cursor=pointer]
+  - main [ref=e31]:
+    - generic [ref=e32]:
+      - heading "Hello" [level=1] [ref=e33]
+      - link "RSS Feed" [ref=e34] [cursor=pointer]:
+        - /url: /rss.xml
+      - paragraph [ref=e39]: I'm Chaitanya — I test systems that don't behave the same way twice. Flaky browsers, parallel workers, LLM judges, and lately the AI agents built to test other AI.
+      - paragraph [ref=e40]: "This is where I write up the parts worth keeping: what actually broke, what the number turned out to be, and what I'd do differently."
+      - generic [ref=e41]:
+        - generic [ref=e42]: "Social Links:"
+        - generic [ref=e43]:
+          - link "Chaitanya Krishna on Github" [ref=e44] [cursor=pointer]:
+            - /url: https://github.com/vebb374
+          - link "Chaitanya Krishna on Linkedin" [ref=e49] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/chaitanya-krishna-371859176/
+          - link "Send an email to Chaitanya Krishna" [ref=e55] [cursor=pointer]:
+            - /url: mailto:yendrapallichaitanya@proton.me
+    - generic [ref=e61]:
+      - heading "Featured" [level=2] [ref=e62]
+      - list [ref=e63]:
+        - listitem [ref=e64]:
+          - link [ref=e65] [cursor=pointer]:
+            - /url: /posts/automating-an-ai-interviewer/
+            - heading "Our AI candidate started as a for-loop" [level=3] [ref=e66]
+          - time [ref=e71]: 13 Sep, 2026
+          - paragraph [ref=e72]: Three turns of chat completion in a for-loop, and a test that asserted six messages existed. Everything after that was the product refusing to stay that simple.
+    - link "All Posts" [ref=e74] [cursor=pointer]:
+      - /url: /posts/
+  - contentinfo [ref=e78]:
+    - generic [ref=e79]:
+      - generic [ref=e80]:
+        - link "Chaitanya Krishna on Github" [ref=e81] [cursor=pointer]:
+          - /url: https://github.com/vebb374
+        - link "Chaitanya Krishna on Linkedin" [ref=e86] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/chaitanya-krishna-371859176/
+        - link "Send an email to Chaitanya Krishna" [ref=e92] [cursor=pointer]:
+          - /url: mailto:yendrapallichaitanya@proton.me
+      - generic [ref=e98]:
+        - generic [ref=e99]: Copyright © 2026
+        - generic [ref=e100]: "|"
+        - generic [ref=e101]: All rights reserved.
