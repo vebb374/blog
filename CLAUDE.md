@@ -12,6 +12,9 @@ pnpm lint           # eslint
 ```
 `pnpm build` runs `astro check` first — **type errors fail the build**, so run it before pushing.
 
+Local browser checks (no extension needed) — Playwright is borrowed from the sibling `he-play` repo's
+pnpm store: `/Users/hackerearth370/Desktop/he-play/node_modules/.pnpm/playwright@1.60.0/node_modules/playwright`
+
 ## Where things live
 | Thing | Path |
 |---|---|
@@ -60,6 +63,15 @@ If a consistent voice ever matters more than zero cost, pre-generate an MP3 per 
 swap this for `<audio>`. See `../knowledge-graph/blog/STACK.md`.
 
 ## Gotchas
+- **`pubDatetime` must be in the past.** A future date makes AstroPaper treat the post as scheduled:
+  it silently skips the HTML page but still emits `index.png`, which looks like a broken build.
+- **`_` excludes files, not folders.** The posts glob is `**/[^_]*.{md,mdx}` — `_releases/foo.md`
+  still publishes. Set `draft: true` inside those files to keep them out.
+- **Theme copy is not all in the config.** The hero lives in `src/pages/index.astro` and the About
+  page in `src/content/pages/about.md`. Re-theming means editing all three or you ship AstroPaper's
+  own marketing copy. Check with: `grep -ri "mingalaba\|astropaper is a\|satnaing" dist/`
+- **Inline `<script>` in a component runs at parse time.** It cannot see DOM rendered after it in the
+  page. Defer with `DOMContentLoaded` + `astro:page-load`, guarded by a data-flag for idempotency.
 - **`site.url` must be a root domain, not a sub-path.** Astro's asset resolution fights sub-path hosting
   (this cost ~200 lines of path-patching scripts in a previous project before it was abandoned).
   So: Vercel/Cloudflare at a root domain, *not* GitHub Pages under `/blog`.
@@ -71,6 +83,9 @@ swap this for `<audio>`. See `../knowledge-graph/blog/STACK.md`.
 ## Deploy
 Static. Build command `pnpm build`, output `dist/`. Vercel or Cloudflare Pages.
 Publish on this domain first, then syndicate to dev.to with `canonical_url` pointing back here.
+
+Renaming the Vercel project does **not** move the production alias. Rename via the API, then
+`POST /v10/projects/{id}/domains` with the new `*.vercel.app` name, then redeploy.
 
 ## Conventions
 - Prose over bullet lists in posts; every technical claim gets a real number or a mechanism.
@@ -100,3 +115,8 @@ Both catch real rhythm problems that are hard to see in your own draft.
 
 The tool is a second pair of eyes, not an authority. Every suppression above is a judgement you should be
 able to defend, which is the same bar the posts themselves are held to.
+
+## Storytelling — `.claude/skills/storytelling/`
+`agent-style` makes prose *correct*, not *alive*; optimising against it alone reads stiff.
+Pair it with the storytelling skill: but/therefore between beats (never "and then"), vary
+sentence length, and don't end every section by announcing its own moral.
