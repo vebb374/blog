@@ -65,10 +65,14 @@
 </div>
 
 <script is:inline data-astro-rerun>
-  (() => {
+  function initReadAloud() {
     const root = document.querySelector("[data-read-aloud]");
     const article = document.getElementById("article");
+    // The control is rendered above <article>, so at parse time the article
+    // does not exist yet — init must wait for the document to be ready.
     if (!root || !article || !("speechSynthesis" in window)) return;
+    if (root.dataset.raReady === "1") return; // idempotent across view transitions
+    root.dataset.raReady = "1";
 
     // Only reveal the control once we know the API exists.
     root.hidden = false;
@@ -169,5 +173,12 @@
     document.addEventListener("astro:before-swap", stop);
     window.addEventListener("pagehide", stop);
     window.addEventListener("beforeunload", stop);
-  })();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initReadAloud, { once: true });
+  } else {
+    initReadAloud();
+  }
+  document.addEventListener("astro:page-load", initReadAloud);
 </script>
