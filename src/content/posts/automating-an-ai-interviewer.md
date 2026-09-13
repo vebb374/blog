@@ -48,7 +48,7 @@ The model cannot see the page. It gets text, and text only.
 
 That is a problem when there are three surfaces and the right action depends on which one is currently showing. Ask for a code edit while the whiteboard is covering the editor and you get a tool call that silently does nothing.
 
-The first version solved this with navigation tools — `showCodingPanel`, `showDesignBoard`, one per surface. It worked, and it was wrong. It gave the model four extra ways to be in the wrong place, and made every interesting failure a navigation failure.
+The first version solved this with navigation tools — `showCodingPanel`, `showDesignBoard`, one per surface. That worked, and it was wrong: four extra ways for the model to be in the wrong place, and every interesting failure turned into a navigation failure.
 
 What replaced it: **every tool result comes back with a state stamp.**
 
@@ -61,7 +61,7 @@ async function formatResult(body: string): Promise<string> {
 
 Every result, without exception, tells the model where it is standing. `surface=ide`. `surface=design`. The navigation tools are gone; each acting tool quietly navigates to the surface it needs before doing its work.
 
-The state is never stored and trusted. It is re-derived from the DOM before every single tool returns, because the page can change underneath the agent between one turn and the next — and it does, constantly, since a second AI is driving the other side of it.
+The state is never stored and trusted. It is re-derived from the DOM before every single tool returns, because the page can change underneath the agent between one turn and the next. And it does, constantly: a second AI is driving the other side of it.
 
 ## The probe order is load-bearing
 
@@ -77,7 +77,7 @@ else                                            currentSurface = "none";
 
 `design` is checked first because the whiteboard visually covers the coding panel. Check in the other order and an open whiteboard reports `ide`, and the agent tries to type code into a canvas.
 
-`designProblem` is checked last, after both coding states, and the reason is worth being precise about. The design-brief check is "the panel is showing and there is no Solve it button". I could not establish that the coding problem phase never renders a panel that would also satisfy it. Rather than go and prove it, I ordered the checks so that it cannot matter: by the time that branch is reachable, both coding checks have already failed, so a programming interview can never be routed down the design path.
+`designProblem` is checked last, after both coding states, and the reason is worth being precise about. The design-brief check is "the panel is showing and there is no Solve it button". I could not establish that the coding problem phase never renders a panel that would also satisfy it. Rather than go and prove it, I ordered the checks so that it cannot matter. By the time that branch is reachable, both coding checks have already failed, so a programming interview can never be routed down the design path.
 
 ![The surface state machine: five states probed in a fixed order — design, ide, problem, designProblem, none — each identified by a concrete DOM condition, with designProblem probed fourth so it is unreachable in a coding-only interview.](../../assets/posts/surface-state.png)
 

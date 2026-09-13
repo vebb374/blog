@@ -76,3 +76,27 @@ Publish on this domain first, then syndicate to dev.to with `canonical_url` poin
 - Prose over bullet lists in posts; every technical claim gets a real number or a mechanism.
 - Anonymise employer and customers in anything published (see `../knowledge-graph/ENGINEERING_DOSSIER.md` §0/§1).
 - Never commit API keys. There are none in this repo and it should stay that way.
+
+## Writing review — `agent-style`
+
+[`yzhao062/agent-style`](https://github.com/yzhao062/agent-style) (677★, MIT + CC-BY-4.0) gives deterministic
+writing checks, not just prose advice. Run it on a draft before publishing:
+
+```bash
+pipx run agent-style review src/content/posts/my-post.md
+```
+
+**Act on:** RULE-12 (sentences over 30 words) and RULE-C (consecutive sentences opening with the same word).
+Both catch real rhythm problems that are hard to see in your own draft.
+
+**Deliberately ignored here, with reasons — don't "fix" these blindly:**
+- **RULE-B, em dash as casual punctuation.** Calibrated to the 2023-24 consensus that em dashes read as
+  AI. The 2026 stylometry says the opposite: frontier models emit *fewer* em dashes than the human
+  baseline, and zero em dashes is now its own tell. Keep them at roughly one per 100 words.
+- **RULE-I, no contractions.** Right for formal API documentation, wrong for a personal blog. Contractions
+  are most of what makes prose sound like a person.
+- **RULE-G, title-case headings.** House style here is sentence case, like the rest of the theme.
+- It also flags **image alt text** as prose. Alt text should be descriptive; ignore those hits.
+
+The tool is a second pair of eyes, not an authority. Every suppression above is a judgement you should be
+able to defend, which is the same bar the posts themselves are held to.
