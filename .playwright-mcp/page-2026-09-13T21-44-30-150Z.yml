@@ -1,0 +1,122 @@
+- generic [active] [ref=f5e1]:
+  - link "Skip to content" [ref=f5e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f5e3]:
+    - generic [ref=f5e4]:
+      - link "Chaitanya Krishna" [ref=f5e5] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f5e6]:
+        - list [ref=f5e7]:
+          - listitem [ref=f5e8]:
+            - link "Posts" [ref=f5e9] [cursor=pointer]:
+              - /url: /posts/
+          - listitem [ref=f5e10]:
+            - link "Tags" [ref=f5e11] [cursor=pointer]:
+              - /url: /tags/
+          - listitem [ref=f5e12]:
+            - link "About" [ref=f5e13] [cursor=pointer]:
+              - /url: /about/
+          - listitem [ref=f5e14]:
+            - link "Archives" [ref=f5e15] [cursor=pointer]:
+              - /url: /archives/
+          - listitem [ref=f5e20]:
+            - link "Search" [ref=f5e21] [cursor=pointer]:
+              - /url: /search/
+          - listitem [ref=f5e26]:
+            - button "dark" [ref=f5e27] [cursor=pointer]
+  - main [ref=f5e31]:
+    - generic [ref=f5e32]:
+      - heading "Hello" [level=1] [ref=f5e33]
+      - link "RSS Feed" [ref=f5e34] [cursor=pointer]:
+        - /url: /rss.xml
+      - paragraph [ref=f5e39]: I'm Chaitanya — I test systems that don't behave the same way twice. Flaky browsers, parallel workers, LLM judges, and lately the AI agents built to test other AI.
+      - paragraph [ref=f5e40]: "This is where I write up the parts worth keeping: what actually broke, what the number turned out to be, and what I'd do differently."
+      - generic [ref=f5e41]:
+        - generic [ref=f5e42]: "Social Links:"
+        - generic [ref=f5e43]:
+          - link "Chaitanya Krishna on Github" [ref=f5e44] [cursor=pointer]:
+            - /url: https://github.com/vebb374
+          - link "Chaitanya Krishna on Linkedin" [ref=f5e49] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/chaitanya-krishna-371859176/
+          - link "Send an email to Chaitanya Krishna" [ref=f5e55] [cursor=pointer]:
+            - /url: mailto:yendrapallichaitanya@proton.me
+    - generic [ref=f5e61]:
+      - heading "Featured" [level=2] [ref=f5e62]
+      - list [ref=f5e63]:
+        - listitem [ref=f5e64]:
+          - link [ref=f5e65] [cursor=pointer]:
+            - /url: /posts/adding-new-posts-in-astropaper-theme/
+            - heading "Adding new posts in AstroPaper theme" [level=3] [ref=f5e66]
+          - generic [ref=f5e67]:
+            - generic [ref=f5e71]: "Updated:"
+            - time [ref=f5e72]: 3 Jun, 2026
+          - paragraph [ref=f5e73]: Some rules & recommendations for creating or adding new posts using AstroPaper theme.
+        - listitem [ref=f5e74]:
+          - link [ref=f5e75] [cursor=pointer]:
+            - /url: /posts/how-to-configure-astropaper-theme/
+            - heading "How to configure AstroPaper theme" [level=3] [ref=f5e76]
+          - generic [ref=f5e77]:
+            - generic [ref=f5e81]: "Updated:"
+            - time [ref=f5e82]: 3 Jun, 2026
+          - paragraph [ref=f5e83]: How you can make AstroPaper theme absolutely yours.
+        - listitem [ref=f5e84]:
+          - link [ref=f5e85] [cursor=pointer]:
+            - /url: /posts/astro-paper-v6/
+            - heading "AstroPaper 6.0" [level=3] [ref=f5e86]
+          - time [ref=f5e91]: 17 May, 2026
+          - paragraph [ref=f5e92]: "AstroPaper v6: a from-scratch rewrite on Astro v6, Tailwind v4, and a new config system."
+    - generic [ref=f5e93]:
+      - heading "Recent Posts" [level=2] [ref=f5e94]
+      - list [ref=f5e95]:
+        - listitem [ref=f5e96]:
+          - link [ref=f5e97] [cursor=pointer]:
+            - /url: /posts/dynamic-og-image-generation-in-astropaper-blog-posts/
+            - heading "Dynamic OG image generation in AstroPaper blog posts" [level=3] [ref=f5e98]
+          - generic [ref=f5e99]:
+            - generic [ref=f5e103]: "Updated:"
+            - time [ref=f5e104]: 3 Jun, 2026
+          - paragraph [ref=f5e105]: New feature in AstroPaper v1.4.0, introducing dynamic OG image generation for blog posts.
+        - listitem [ref=f5e106]:
+          - link [ref=f5e107] [cursor=pointer]:
+            - /url: /posts/customizing-astropaper-theme-color-schemes/
+            - heading "Customizing AstroPaper theme color schemes" [level=3] [ref=f5e108]
+          - generic [ref=f5e109]:
+            - generic [ref=f5e113]: "Updated:"
+            - time [ref=f5e114]: 17 May, 2026
+          - paragraph [ref=f5e115]: How you can enable/disable light & dark mode; and customize color schemes of AstroPaper theme.
+        - listitem [ref=f5e116]:
+          - link [ref=f5e117] [cursor=pointer]:
+            - /url: /posts/predefined-color-schemes/
+            - heading "Predefined color schemes" [level=3] [ref=f5e118]
+          - generic [ref=f5e119]:
+            - generic [ref=f5e123]: "Updated:"
+            - time [ref=f5e124]: 16 May, 2026
+          - paragraph [ref=f5e125]: Some of the well-crafted, updated predefined color schemes for AstroPaper.
+        - listitem [ref=f5e126]:
+          - link [ref=f5e127] [cursor=pointer]:
+            - /url: /posts/how-to-add-latex-equations-in-blog-posts/
+            - heading "How to add LaTeX Equations in Astro blog posts" [level=3] [ref=f5e128]
+          - generic [ref=f5e129]:
+            - generic [ref=f5e133]: "Updated:"
+            - time [ref=f5e134]: 22 Mar, 2025
+          - paragraph [ref=f5e135]: Learn how to add LaTeX equations in Astro blog posts using Markdown, KaTeX, and remark/rehype plugins.
+    - link "All Posts" [ref=f5e137] [cursor=pointer]:
+      - /url: /posts/
+  - contentinfo [ref=f5e141]:
+    - generic [ref=f5e142]:
+      - generic [ref=f5e143]:
+        - link "Chaitanya Krishna on Github" [ref=f5e144] [cursor=pointer]:
+          - /url: https://github.com/vebb374
+        - link "Chaitanya Krishna on Linkedin" [ref=f5e149] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/chaitanya-krishna-371859176/
+        - link "Send an email to Chaitanya Krishna" [ref=f5e155] [cursor=pointer]:
+          - /url: mailto:yendrapallichaitanya@proton.me
+      - generic [ref=f5e161]:
+        - generic [ref=f5e162]: Copyright © 2026
+        - generic [ref=f5e163]: "|"
+        - generic [ref=f5e164]: All rights reserved.
+  - generic [ref=f5e167]:
+    - button [ref=f5e168]
+    - button [ref=f5e174]
+    - button [ref=f5e178]
+    - button [ref=f5e183]

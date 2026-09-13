@@ -1,0 +1,51 @@
+- generic [active] [ref=f3e1]:
+  - link "Skip to content" [ref=f3e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f3e3]:
+    - generic [ref=f3e4]:
+      - link "Chaitanya Krishna" [ref=f3e5] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f3e6]:
+        - list [ref=f3e7]:
+          - listitem [ref=f3e8]:
+            - link "Posts" [ref=f3e9] [cursor=pointer]:
+              - /url: /posts/
+          - listitem [ref=f3e10]:
+            - link "Tags" [ref=f3e11] [cursor=pointer]:
+              - /url: /tags/
+          - listitem [ref=f3e12]:
+            - link "About" [ref=f3e13] [cursor=pointer]:
+              - /url: /about/
+          - listitem [ref=f3e14]:
+            - link "Archives" [ref=f3e15] [cursor=pointer]:
+              - /url: /archives/
+          - listitem [ref=f3e20]:
+            - link "Search" [ref=f3e21] [cursor=pointer]:
+              - /url: /search/
+          - listitem [ref=f3e26]:
+            - button "dark" [ref=f3e27] [cursor=pointer]
+  - main [ref=f3e31]:
+    - generic [ref=f3e32]:
+      - heading "404" [level=1] [ref=f3e33]
+      - generic [aria-hidden] [ref=f3e34]: ¯\_(ツ)_/¯
+      - paragraph [ref=f3e35]: Page Not Found
+      - link "Go back home" [ref=f3e36] [cursor=pointer]:
+        - /url: /
+  - contentinfo [ref=f3e37]:
+    - generic [ref=f3e38]:
+      - generic [ref=f3e39]:
+        - link "Chaitanya Krishna on Github" [ref=f3e40] [cursor=pointer]:
+          - /url: https://github.com/vebb374
+        - link "Chaitanya Krishna on Linkedin" [ref=f3e45] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/chaitanya-krishna-371859176/
+        - link "Send an email to Chaitanya Krishna" [ref=f3e51] [cursor=pointer]:
+          - /url: mailto:yendrapallichaitanya@proton.me
+      - generic [ref=f3e57]:
+        - generic [ref=f3e58]: Copyright © 2026
+        - generic [ref=f3e59]: "|"
+        - generic [ref=f3e60]: All rights reserved.
+  - generic [ref=f3e63]:
+    - button [ref=f3e64]
+    - button [ref=f3e70]
+    - button [ref=f3e74]
+    - button [ref=f3e79]

@@ -1,0 +1,283 @@
+- generic [active] [ref=f6e102]:
+  - link "Skip to content" [ref=f6e103] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f6e104]:
+    - generic [ref=f6e105]:
+      - link "Chaitanya Krishna" [ref=f6e106] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f6e107]:
+        - list [ref=f6e108]:
+          - listitem [ref=f6e109]:
+            - link "Posts" [ref=f6e110] [cursor=pointer]:
+              - /url: /posts/
+          - listitem [ref=f6e111]:
+            - link "Tags" [ref=f6e112] [cursor=pointer]:
+              - /url: /tags/
+          - listitem [ref=f6e113]:
+            - link "About" [ref=f6e114] [cursor=pointer]:
+              - /url: /about/
+          - listitem [ref=f6e115]:
+            - link "Archives" [ref=f6e116] [cursor=pointer]:
+              - /url: /archives/
+          - listitem [ref=f6e121]:
+            - link "Search" [ref=f6e122] [cursor=pointer]:
+              - /url: /search/
+          - listitem [ref=f6e127]:
+            - button "dark" [ref=f6e128] [cursor=pointer]
+  - link "Go back" [ref=f6e133] [cursor=pointer]:
+    - /url: /
+  - main [ref=f6e138]:
+    - heading "Our AI candidate started as a for-loop" [level=1] [ref=f6e139]
+    - time [ref=f6e145]: 13 Sep, 2026
+    - paragraph [ref=f6e146]: 9 min read
+    - generic [ref=f6e147]:
+      - button "Read aloud" [ref=f6e148] [cursor=pointer]
+      - status [ref=f6e153]
+    - article [ref=f6e154]:
+      - paragraph [ref=f6e155]: The first version took an afternoon.
+      - paragraph [ref=f6e156]:
+        - text: "Our product runs job interviews with an AI. It talks, it listens, it decides what to ask next. To test it I needed something on the other side of the call, so I wrote the dumbest thing that could work: wait for the interviewer to say something, hand the text to"
+        - code [ref=f6e157]: gpt-4.1-nano
+        - text: ", send the reply back."
+      - generic [ref=f6e159]:
+        - code [ref=f6e160]:
+          - generic [ref=f6e161]: const CANDIDATE_SYSTEM_PROMPT = [
+          - generic [ref=f6e162]: "\"You are a senior software engineer attending a job interview.\","
+          - generic [ref=f6e163]: "\"Answer in ONE short sentence, 20 words maximum, professionally.\","
+          - generic [ref=f6e164]: "\"Stay on topic and never break character.\","
+          - generic [ref=f6e165]: "].join(\" \");"
+          - generic [ref=f6e166]: const CONVERSATION_TURNS = 3;
+        - button "Copy" [ref=f6e167] [cursor=pointer]
+      - paragraph [ref=f6e168]: Three turns. Twenty words each. It ran green on the first try, which felt great for about two weeks.
+      - heading "Table of contents" [level=2] [ref=f6e169]:
+        - text: Table of contents
+        - link [ref=f6e170] [cursor=pointer]:
+          - /url: "#table-of-contents"
+          - text: "#"
+      - paragraph
+      - group [ref=f6e171] [cursor=pointer]:
+        - generic "Open Table of contents" [ref=f6e172]
+      - paragraph
+      - heading "The assertion that asserted nothing" [level=2] [ref=f6e173]:
+        - text: The assertion that asserted nothing
+        - link [ref=f6e174] [cursor=pointer]:
+          - /url: "#the-assertion-that-asserted-nothing"
+          - text: "#"
+      - paragraph [ref=f6e175]: "Here is what the test checked when it passed:"
+      - generic [ref=f6e177]:
+        - code [ref=f6e178]:
+          - generic [ref=f6e179]: expect(chatClient.getHistory()).toHaveLength(CONVERSATION_TURNS * 2);
+        - button "Copy" [ref=f6e180] [cursor=pointer]
+      - paragraph [ref=f6e181]: Six messages exist. That’s it. Not that the answers were relevant. Not that the interviewer got anywhere. A candidate replying “yes” three times would have passed, and so would one replying in Latin.
+      - paragraph [ref=f6e182]: I’d automated the shape of an interview and none of its content. The green tick was real; the test underneath it was decorative.
+      - paragraph [ref=f6e183]: That would have stayed embarrassing-but-harmless if the product had stood still. It didn’t.
+      - heading "Three turns is not an interview" [level=2] [ref=f6e184]:
+        - text: Three turns is not an interview
+        - link [ref=f6e185] [cursor=pointer]:
+          - /url: "#three-turns-is-not-an-interview"
+          - text: "#"
+      - paragraph [ref=f6e186]: Real interviews don’t run for three turns. They run until the interviewer decides it’s done — six turns, twenty-six, depending entirely on how the candidate answers.
+      - paragraph [ref=f6e187]:
+        - text: A counter can’t express
+        - emphasis [ref=f6e188]: stop when the other side stops
+        - text: . Worse, it can’t tell the difference between an interview ending properly and one hanging, because both look like “the loop finished.”
+      - paragraph [ref=f6e189]:
+        - text: "So ending had to become a decision rather than a number. That meant giving the model a tool to make it with:"
+        - code [ref=f6e190]: endInterview
+        - text: .
+      - paragraph [ref=f6e191]: That one change quietly ended the for-loop. Once the model decides when to stop, you’re in an agent loop whether you’ve called it one or not.
+      - heading "Then it had to type" [level=2] [ref=f6e192]:
+        - text: Then it had to type
+        - link [ref=f6e193] [cursor=pointer]:
+          - /url: "#then-it-had-to-type"
+          - text: "#"
+      - paragraph [ref=f6e194]: The next thing the product shipped was coding questions.
+      - paragraph [ref=f6e195]:
+        - text: A chat client can say “I’d use a hash map here” all day long. It cannot open the editor, write a solution, and run the tests against it. The moment a real candidate could be asked to
+        - emphasis [ref=f6e196]: do
+        - text: something instead of describe it, my fake one was mute in a way no assertion would catch — it would still answer, still sound plausible, still go green.
+      - paragraph [ref=f6e197]: So the candidate needed hands.
+      - paragraph [ref=f6e198]: Design questions came next, and brought a whiteboard — a third surface, with its own rules and a habit of covering the second one. After that, audio-only interviews, where the interviewer’s turn has no clean end signal at all. You infer it from text that stops growing.
+      - paragraph [ref=f6e199]: None of that was foreseeable, and the for-loop was still the right first version. It was cheap, it proved the socket injection worked, and it told me inside a day that the idea was viable.
+      - paragraph [ref=f6e200]:
+        - text: What’s worth noticing is where the pressure came from. Not the model —
+        - code [ref=f6e201]: gpt-4.1-nano
+        - text: in a loop could hold a conversation fine. It came from the product’s surface area. Every new thing a real candidate could do was a new thing mine couldn’t, and each gap arrived disguised as a passing test.
+      - heading "The loop that eats itself" [level=2] [ref=f6e202]:
+        - text: The loop that eats itself
+        - link [ref=f6e203] [cursor=pointer]:
+          - /url: "#the-loop-that-eats-itself"
+          - text: "#"
+      - paragraph [ref=f6e204]:
+        - text: The agent runs on the Vercel AI SDK’s
+        - code [ref=f6e205]: ToolLoopAgent
+        - text: with
+        - code [ref=f6e206]: "toolChoice: \"required\""
+        - text: ", so it must call a tool every step. It can’t trail off into prose."
+      - paragraph [ref=f6e207]:
+        - text: Most of the tools are boring.
+        - code [ref=f6e208]: editCode
+        - text: writes into the editor,
+        - code [ref=f6e209]: runTestCases
+        - text: clicks Run,
+        - code [ref=f6e210]: endInterview
+        - text: ends it.
+      - paragraph [ref=f6e211]:
+        - code [ref=f6e212]: sendResponse
+        - text: is the one worth looking at. It speaks, blocks on the interviewer’s reply, and returns that reply as its own tool result.
+      - paragraph [ref=f6e213]:
+        - text: So the tool result
+        - emphasis [ref=f6e214]: is
+        - text: the next turn. The SDK’s tool loop and the conversation are the same loop — which means there’s no orchestrator anywhere in the harness, no turn manager, no outer
+        - code [ref=f6e215]: while
+        - text: . The whole interview is one
+        - code [ref=f6e216]: generate()
+        - text: call that returns when the model calls
+        - code [ref=f6e217]: endInterview
+        - text: .
+      - paragraph [ref=f6e218]: I didn’t design that. I wrote the obvious thing, noticed the outer loop had nothing left to do, and deleted it.
+      - paragraph [ref=f6e219]:
+        - 'button "Zoom image: Architecture of the candidate rig: the ToolLoopAgent calls into a live Playwright-driven interview page across three surfaces, every tool result returns stamped with the current surface, and sendResponse sends text to the interviewer over a WebSocket whose reply becomes the next tool result." [ref=f6e220]'
+      - heading "The agent has no eyes" [level=2] [ref=f6e221]:
+        - text: The agent has no eyes
+        - link [ref=f6e222] [cursor=pointer]:
+          - /url: "#the-agent-has-no-eyes"
+          - text: "#"
+      - paragraph [ref=f6e223]: Three surfaces, and a model that only ever receives text. Ask for a code edit while the whiteboard is covering the editor and you get a tool call that does nothing at all — silently, successfully, into the void.
+      - paragraph [ref=f6e224]:
+        - text: My first fix was navigation tools.
+        - code [ref=f6e225]: showCodingPanel
+        - text: ","
+        - code [ref=f6e226]: showDesignBoard
+        - text: ", one per surface. It worked, and it was exactly wrong: four new ways for the model to be somewhere it didn’t mean to be, and every interesting failure now wearing a navigation costume."
+      - paragraph [ref=f6e227]: What replaced them is one line in every tool result.
+      - generic [ref=f6e229]:
+        - code [ref=f6e230]:
+          - generic [ref=f6e231]: "async function formatResult(body: string): Promise<string> {"
+          - generic [ref=f6e232]: await refreshSurface(); // re-read the live DOM
+          - generic [ref=f6e233]: "return `surface=${currentSurface}\\n${body}`;"
+          - generic [ref=f6e234]: "}"
+        - button "Copy" [ref=f6e235] [cursor=pointer]
+      - paragraph [ref=f6e236]:
+        - code [ref=f6e237]: surface=ide
+        - text: .
+        - code [ref=f6e238]: surface=design
+        - text: . Every result, no exceptions. The navigation tools went in the bin, and each acting tool now quietly walks to the surface it needs before doing its job.
+      - paragraph [ref=f6e239]: The state is never stored and trusted. It gets re-derived from the DOM before every single tool returns, because the page changes underneath the agent between turns. Constantly. There’s a second AI driving the other side of it.
+      - heading "Ordering is cheaper than proof" [level=2] [ref=f6e240]:
+        - text: Ordering is cheaper than proof
+        - link [ref=f6e241] [cursor=pointer]:
+          - /url: "#ordering-is-cheaper-than-proof"
+          - text: "#"
+      - paragraph [ref=f6e242]: "Deriving the state is four visibility checks, and the order is the whole design:"
+      - generic [ref=f6e244]:
+        - code [ref=f6e245]:
+          - generic [ref=f6e246]: if (await whiteboard.isVisible()) currentSurface = "design";
+          - generic [ref=f6e247]: else if (await codingWorkbench.isVisible()) currentSurface = "ide";
+          - generic [ref=f6e248]: else if (await codingProblemPanel.isVisible()) currentSurface = "problem";
+          - generic [ref=f6e249]: else if (await designProblemPanel.isVisible()) currentSurface = "designProblem";
+          - generic [ref=f6e250]: else currentSurface = "none";
+        - button "Copy" [ref=f6e251] [cursor=pointer]
+      - paragraph [ref=f6e252]:
+        - code [ref=f6e253]: design
+        - text: goes first because the whiteboard sits on top of the coding panel. Flip those two and an open whiteboard reports
+        - code [ref=f6e254]: ide
+        - text: ", and the agent starts typing code into a canvas."
+      - paragraph [ref=f6e255]:
+        - code [ref=f6e256]: designProblem
+        - text: goes last, and that one has a better reason. The design-brief check is “the panel is showing and there’s no Solve it button.” I couldn’t establish that the coding phase never renders something that would also satisfy it.
+      - paragraph [ref=f6e257]: I could have gone and proved it. Instead I ordered the checks so it can’t matter — by the time that branch is reachable, both coding checks have already failed, so a programming interview can’t be routed down the design path no matter what the selectors do.
+      - paragraph [ref=f6e258]:
+        - 'button "Zoom image: The surface state machine: five states probed in a fixed order — design, ide, problem, designProblem, none — each identified by a concrete DOM condition, with designProblem probed fourth so it is unreachable in a coding-only interview." [ref=f6e259]'
+      - paragraph [ref=f6e260]: Proofs rot when the markup changes. The ordering doesn’t.
+      - heading "Never throw in a live call" [level=2] [ref=f6e261]:
+        - text: Never throw in a live call
+        - link [ref=f6e262] [cursor=pointer]:
+          - /url: "#never-throw-in-a-live-call"
+          - text: "#"
+      - paragraph [ref=f6e263]:
+        - code [ref=f6e264]: "toolChoice: \"required\""
+        - text: has a sharp edge. If a tool throws, the exception comes out of
+        - code [ref=f6e265]: generate()
+        - text: and takes the whole run with it.
+      - paragraph [ref=f6e266]: That call is live. There’s an interviewer mid-question on the other end. Killing the process because a selector timed out is not a thing I’m willing to ship.
+      - paragraph [ref=f6e267]: "So tools catch their own errors and hand them back as text:"
+      - generic [ref=f6e269]:
+        - code [ref=f6e270]:
+          - generic [ref=f6e271]: "catch (error) {"
+          - generic [ref=f6e272]: "return `Error reading question context: ${errText(error)}`;"
+          - generic [ref=f6e273]: "}"
+        - button "Copy" [ref=f6e274] [cursor=pointer]
+      - paragraph [ref=f6e275]: Now a failure is something the model can read and work around, instead of something that ends the interview.
+      - paragraph [ref=f6e276]: One exception, on purpose. Writing code into the editor reads the buffer back and throws if the write didn’t land. If the editor silently dropped it, everything after that point is fiction — better to stop than to keep testing an imaginary solution.
+      - heading "Speaking without a microphone" [level=2] [ref=f6e277]:
+        - text: Speaking without a microphone
+        - link [ref=f6e278] [cursor=pointer]:
+          - /url: "#speaking-without-a-microphone"
+          - text: "#"
+      - paragraph [ref=f6e279]: There’s no microphone and no text-to-speech. The candidate’s speech is text injected straight over the interview’s WebSocket.
+      - paragraph [ref=f6e280]: That isn’t laziness. Synthesising audio, playing it into a virtual mic, and hoping the far end transcribes it correctly would turn every test into a test of the audio pipeline. I want to test the interviewer’s reasoning.
+      - paragraph [ref=f6e281]: Two things from that layer cost me time and might save you some.
+      - paragraph [ref=f6e282]:
+        - text: Interrupting the interviewer means sending an interrupt, then waiting for it to confirm it stopped speaking. Arm the waiter
+        - emphasis [ref=f6e283]: before
+        - text: you send the interrupt. Otherwise the confirmation beats your listener to it and you sit there waiting for an event that already happened — which, naturally, only shows up under load.
+      - paragraph [ref=f6e284]:
+        - text: And
+        - code [ref=f6e285]: ws.send()
+        - text: on a socket in CLOSING doesn’t throw. It drops the frame and says nothing. So the send path picks the newest open socket every time rather than caching one, because a cached socket that quietly closed is a message that vanishes with no error anywhere.
+      - heading "The bug it found first" [level=2] [ref=f6e286]:
+        - text: The bug it found first
+        - link [ref=f6e287] [cursor=pointer]:
+          - /url: "#the-bug-it-found-first"
+          - text: "#"
+      - paragraph [ref=f6e288]: All of this exists to catch things. The first real thing it caught wasn’t in my harness.
+      - paragraph [ref=f6e289]: Design questions put a brief on screen. The interviewer announces it’s doing that — and never reads the brief aloud.
+      - paragraph [ref=f6e290]: A human tester glances at the panel, absorbs it without noticing they did, and answers. My candidate couldn’t. No eyes, only the transcript. So it sat there answering a question nobody had told it.
+      - paragraph [ref=f6e291]: Which is also what happens to anyone relying on the audio. Someone using a screen reader. Someone who looked away. The automated candidate had a strictly narrower sensory channel than a human tester, and the narrow channel is the only reason the gap ever became visible.
+      - paragraph [ref=f6e292]: "The fix was one rule: fetch the question text before answering a design question. Took ten minutes."
+      - heading "If you’re building one of these" [level=2] [ref=f6e293]:
+        - text: If you’re building one of these
+        - link [ref=f6e294] [cursor=pointer]:
+          - /url: "#if-youre-building-one-of-these"
+          - text: "#"
+      - paragraph [ref=f6e295]: Give the agent fewer tools and better results. My navigation tools looked like capability and were really just four more ways to get lost; a state stamp on every result did the same job with none of the surface.
+      - paragraph [ref=f6e296]: Don’t let a tool throw inside a loop where throwing ends a live session. Hand the error back as data and let the model decide what to do with it.
+      - paragraph [ref=f6e297]: And when you catch yourself about to prove that some state can’t happen, check whether you can just order things so the question never comes up.
+      - paragraph [ref=f6e298]: The thing I keep coming back to, though, is that first test. It was green for two weeks. It was green because six messages existed. Every hard part of this system exists because that green tick was lying, and nothing about the tick itself was ever going to tell me.
+    - separator [ref=f6e299]
+    - button "Back to top" [ref=f6e301] [cursor=pointer]
+    - list [ref=f6e306]:
+      - listitem [ref=f6e307]:
+        - link "ai-agents" [ref=f6e308] [cursor=pointer]:
+          - /url: /tags/ai-agents/
+      - listitem [ref=f6e312]:
+        - link "testing" [ref=f6e313] [cursor=pointer]:
+          - /url: /tags/testing/
+      - listitem [ref=f6e317]:
+        - link "playwright" [ref=f6e318] [cursor=pointer]:
+          - /url: /tags/playwright/
+    - generic [ref=f6e322]:
+      - generic [ref=f6e323]: "Share this post:"
+      - generic [ref=f6e324]:
+        - link "Share this post on Linkedin" [ref=f6e325] [cursor=pointer]:
+          - /url: https://www.linkedin.com/sharing/share-offsite/?url=https://qacraft.vercel.app/posts/automating-an-ai-interviewer/
+        - link "Share this post on X" [ref=f6e331] [cursor=pointer]:
+          - /url: https://x.com/intent/post?url=https://qacraft.vercel.app/posts/automating-an-ai-interviewer/
+        - link "Share this post via email" [ref=f6e336] [cursor=pointer]:
+          - /url: mailto:?subject=See%20this%20post&body=https://qacraft.vercel.app/posts/automating-an-ai-interviewer/
+    - separator [ref=f6e342]
+  - contentinfo [ref=f6e343]:
+    - generic [ref=f6e344]:
+      - generic [ref=f6e345]:
+        - link "Chaitanya Krishna on Github" [ref=f6e346] [cursor=pointer]:
+          - /url: https://github.com/vebb374
+        - link "Chaitanya Krishna on Linkedin" [ref=f6e351] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/chaitanya-krishna-371859176/
+        - link "Send an email to Chaitanya Krishna" [ref=f6e357] [cursor=pointer]:
+          - /url: mailto:yendrapallichaitanya@proton.me
+      - generic [ref=f6e363]:
+        - generic [ref=f6e364]: Copyright © 2026
+        - generic [ref=f6e365]: "|"
+        - generic [ref=f6e366]: All rights reserved.
+  - generic [ref=f6e368]: Our AI candidate started as a for-loop | Chaitanya Krishna

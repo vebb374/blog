@@ -30,7 +30,7 @@ export default defineAstroPaperConfig({
   },
   socials: [
     { name: "github", url: "https://github.com/vebb374" },
-    { name: "linkedin", url: "https://www.linkedin.com/in/chaitanya-krishna-371859176/" },
+    { name: "linkedin", url: "https://www.linkedin.com/in/chaitanya-krishna-y/" },
     { name: "mail", url: "mailto:yendrapallichaitanya@proton.me" },
   ],
   shareLinks: [

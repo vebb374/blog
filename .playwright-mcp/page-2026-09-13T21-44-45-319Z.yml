@@ -1,0 +1,628 @@
+- generic [active] [ref=f5e188]:
+  - link "Skip to content" [ref=f5e189] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f5e190]:
+    - generic [ref=f5e191]:
+      - link "Chaitanya Krishna" [ref=f5e192] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f5e193]:
+        - list [ref=f5e194]:
+          - listitem [ref=f5e195]:
+            - link "Posts" [ref=f5e196] [cursor=pointer]:
+              - /url: /posts/
+          - listitem [ref=f5e197]:
+            - link "Tags" [ref=f5e198] [cursor=pointer]:
+              - /url: /tags/
+          - listitem [ref=f5e199]:
+            - link "About" [ref=f5e200] [cursor=pointer]:
+              - /url: /about/
+          - listitem [ref=f5e201]:
+            - link "Archives" [ref=f5e202] [cursor=pointer]:
+              - /url: /archives/
+          - listitem [ref=f5e207]:
+            - link "Search" [ref=f5e208] [cursor=pointer]:
+              - /url: /search/
+          - listitem [ref=f5e213]:
+            - button "dark" [ref=f5e214] [cursor=pointer]
+  - link "Go back" [ref=f5e219] [cursor=pointer]:
+    - /url: /
+  - main [ref=f5e224]:
+    - heading "Adding new posts in AstroPaper theme" [level=1] [ref=f5e225]
+    - generic [ref=f5e227]:
+      - generic [ref=f5e231]: "Updated:"
+      - time [ref=f5e232]: 3 Jun, 2026
+    - paragraph [ref=f5e233]: 7 min read
+    - generic [ref=f5e234]:
+      - button "Read aloud" [ref=f5e235] [cursor=pointer]
+      - status [ref=f5e240]
+    - article [ref=f5e241]:
+      - paragraph [ref=f5e242]: This guide covers the rules and conventions for creating new posts in AstroPaper — file placement, frontmatter fields, images, and syntax highlighting.
+      - figure [ref=f5e243]:
+        - 'button "Zoom image: Free Classic wooden desk with writing materials, vintage clock, and a leather bag. Stock Photo" [ref=f5e244]'
+        - paragraph [ref=f5e246]:
+          - text: Photo by
+          - link "Pixabay" [ref=f5e247] [cursor=pointer]:
+            - /url: https://www.pexels.com/photo/brown-wooden-desk-159618/
+      - heading "Table of contents" [level=2] [ref=f5e248]:
+        - text: Table of contents
+        - link [ref=f5e249] [cursor=pointer]:
+          - /url: "#table-of-contents"
+          - text: "#"
+      - paragraph
+      - group [ref=f5e250] [cursor=pointer]:
+        - generic "Open Table of contents" [ref=f5e251]
+      - paragraph
+      - heading "Creating a Blog Post" [level=2] [ref=f5e252]:
+        - text: Creating a Blog Post
+        - link [ref=f5e253] [cursor=pointer]:
+          - /url: "#creating-a-blog-post"
+          - text: "#"
+      - paragraph [ref=f5e254]:
+        - text: To write a new blog post, create a markdown (or MDX) file inside the
+        - code [ref=f5e255]: src/content/posts/
+        - text: directory.
+      - paragraph [ref=f5e256]:
+        - text: You can organize posts into subdirectories to make content easier to manage. The subdirectory name becomes part of the post URL. For example,
+        - code [ref=f5e257]: src/content/posts/2025/example-post.md
+        - text: will be available at
+        - code [ref=f5e258]: /posts/2025/example-post
+        - text: .
+      - paragraph [ref=f5e259]:
+        - text: If you want a subdirectory for organization only, without it affecting the URL, prefix the folder name with an underscore (
+        - code [ref=f5e260]: _
+        - text: ).
+      - generic [ref=f5e262]:
+        - code [ref=f5e263]:
+          - generic [ref=f5e264]: "# Example: post file paths and their URLs"
+          - generic [ref=f5e265]: src/content/posts/very-first-post.md -> mysite.com/posts/very-first-post
+          - generic [ref=f5e266]: src/content/posts/2025/example-post.md -> mysite.com/posts/2025/example-post
+          - generic [ref=f5e267]: src/content/posts/_2026/another-post.md -> mysite.com/posts/another-post
+          - generic [ref=f5e268]: src/content/posts/docs/_legacy/how-to.md -> mysite.com/posts/docs/how-to
+          - generic [ref=f5e269]: src/content/posts/Example Dir/Dummy Post.md -> mysite.com/posts/example-dir/dummy-post
+        - button "Copy" [ref=f5e270] [cursor=pointer]
+      - generic [ref=f5e271]:
+        - generic [ref=f5e272]: Tip
+        - paragraph [ref=f5e278]:
+          - text: Files and directories prefixed with
+          - code [ref=f5e279]: _
+          - text: are excluded from routing. Use them for drafts, shared assets, or internal-only content.
+      - heading "Frontmatter" [level=2] [ref=f5e280]:
+        - text: Frontmatter
+        - link [ref=f5e281] [cursor=pointer]:
+          - /url: "#frontmatter"
+          - text: "#"
+      - paragraph [ref=f5e282]:
+        - text: Frontmatter is the main place to store metadata about a blog post. It lives at the top of the file in YAML format. Read more about frontmatter and its usage in
+        - link "Astro documentation" [ref=f5e283] [cursor=pointer]:
+          - /url: https://docs.astro.build/en/guides/markdown-content/
+        - text: .
+      - paragraph [ref=f5e284]: "Here is the list of frontmatter properties for each post:"
+      - table [ref=f5e287]:
+        - rowgroup [ref=f5e288]:
+          - row [ref=f5e289]:
+            - columnheader "Property" [ref=f5e290]
+            - columnheader "Description" [ref=f5e291]
+            - columnheader "Remark" [ref=f5e292]
+        - rowgroup [ref=f5e293]:
+          - row [ref=f5e294]:
+            - cell [ref=f5e295]:
+              - strong [ref=f5e296]:
+                - emphasis [ref=f5e297]: title
+            - cell "Title of the post. (h1)" [ref=f5e298]
+            - cell [ref=f5e299]:
+              - text: required
+              - superscript [ref=f5e300]: "*"
+          - row [ref=f5e301]:
+            - cell [ref=f5e302]:
+              - strong [ref=f5e303]:
+                - emphasis [ref=f5e304]: description
+            - cell "Description of the post. Used in post excerpt and site description of the post." [ref=f5e305]
+            - cell [ref=f5e306]:
+              - text: required
+              - superscript [ref=f5e307]: "*"
+          - row [ref=f5e308]:
+            - cell [ref=f5e309]:
+              - strong [ref=f5e310]:
+                - emphasis [ref=f5e311]: pubDatetime
+            - cell "Published datetime in ISO 8601 format." [ref=f5e312]
+            - cell [ref=f5e313]:
+              - text: required
+              - superscript [ref=f5e314]: "*"
+          - row [ref=f5e315]:
+            - cell [ref=f5e316]:
+              - strong [ref=f5e317]:
+                - emphasis [ref=f5e318]: modDatetime
+            - cell "Modified datetime in ISO 8601 format. (only add this property when a blog post is modified)" [ref=f5e319]
+            - cell "optional" [ref=f5e320]
+          - row [ref=f5e321]:
+            - cell [ref=f5e322]:
+              - strong [ref=f5e323]:
+                - emphasis [ref=f5e324]: author
+            - cell "Author of the post." [ref=f5e325]
+            - cell [ref=f5e326]:
+              - text: default =
+              - code [ref=f5e327]: site.author
+          - row [ref=f5e328]:
+            - cell [ref=f5e329]:
+              - strong [ref=f5e330]:
+                - emphasis [ref=f5e331]: featured
+            - cell "Whether or not to display this post in the featured section of the home page." [ref=f5e332]
+            - cell "default = false" [ref=f5e333]
+          - row [ref=f5e334]:
+            - cell [ref=f5e335]:
+              - strong [ref=f5e336]:
+                - emphasis [ref=f5e337]: draft
+            - cell "Mark this post as ‘unpublished’." [ref=f5e338]
+            - cell "default = false" [ref=f5e339]
+          - row [ref=f5e340]:
+            - cell [ref=f5e341]:
+              - strong [ref=f5e342]:
+                - emphasis [ref=f5e343]: tags
+            - cell "Related keywords for this post. Written in array YAML format." [ref=f5e344]
+            - cell "default = others" [ref=f5e345]
+          - row [ref=f5e346]:
+            - cell [ref=f5e347]:
+              - strong [ref=f5e348]:
+                - emphasis [ref=f5e349]: ogImage
+            - cell "OG image of the post. Useful for social media sharing and SEO. Can be a remote URL or an image path relative to the current folder." [ref=f5e350]
+            - cell [ref=f5e351]:
+              - text: default =
+              - code [ref=f5e352]: site.ogImage
+              - text: or generated OG image
+          - row [ref=f5e353]:
+            - cell [ref=f5e354]:
+              - strong [ref=f5e355]:
+                - emphasis [ref=f5e356]: canonicalURL
+            - cell "Canonical URL (absolute), in case the article already exists on another source." [ref=f5e357]
+            - cell [ref=f5e358]:
+              - text: default =
+              - code [ref=f5e359]: Astro.site
+              - text: +
+              - code [ref=f5e360]: Astro.url.pathname
+          - row [ref=f5e361]:
+            - cell [ref=f5e362]:
+              - strong [ref=f5e363]:
+                - emphasis [ref=f5e364]: hideEditPost
+            - cell "Hide the edit-post button under the post title. Applies only to the current post." [ref=f5e365]
+            - cell "default = false" [ref=f5e366]
+          - row [ref=f5e367]:
+            - cell [ref=f5e368]:
+              - strong [ref=f5e369]:
+                - emphasis [ref=f5e370]: timezone
+            - cell [ref=f5e371]:
+              - text: Specify a timezone in IANA format for the current post. Overrides the global
+              - code [ref=f5e372]: site.timezone
+              - text: config for this post only.
+            - cell [ref=f5e373]:
+              - text: default =
+              - code [ref=f5e374]: site.timezone
+      - generic [ref=f5e375]:
+        - generic [ref=f5e376]: Tip
+        - paragraph [ref=f5e382]:
+          - text: You can get an ISO 8601 datetime by running
+          - code [ref=f5e383]: new Date().toISOString()
+          - text: in the console.
+      - paragraph [ref=f5e384]:
+        - text: Only
+        - code [ref=f5e385]: title
+        - text: ","
+        - code [ref=f5e386]: description
+        - text: ", and"
+        - code [ref=f5e387]: pubDatetime
+        - text: fields in frontmatter must be specified.
+      - paragraph [ref=f5e388]: Title and description (excerpt) are important for search engine optimization (SEO) and thus AstroPaper encourages you to include these in all blog posts.
+      - paragraph [ref=f5e389]:
+        - text: If you omit
+        - code [ref=f5e390]: tags
+        - text: in a blog post (in other words, if no tag is specified), the default tag
+        - code [ref=f5e391]: others
+        - text: will be used as a tag for that post. You can set the default tag in
+        - code [ref=f5e392]: src/content.config.ts
+        - text: ":"
+      - generic [ref=f5e394]:
+        - code [ref=f5e395]:
+          - generic [ref=f5e396]: // ...
+          - generic [ref=f5e397]: "tags: z.array(z.string()).default([\"others\"]), // replace \"others\" with whatever you want"
+          - generic [ref=f5e398]: // ...
+        - generic [ref=f5e399]: src/content.config.ts
+        - button "Copy" [ref=f5e400] [cursor=pointer]
+      - heading "Sample Frontmatter" [level=3] [ref=f5e401]:
+        - text: Sample Frontmatter
+        - link [ref=f5e402] [cursor=pointer]:
+          - /url: "#sample-frontmatter"
+          - text: "#"
+      - paragraph [ref=f5e403]: Here is sample frontmatter for a post.
+      - generic [ref=f5e405]:
+        - code [ref=f5e406]:
+          - generic [ref=f5e407]: "---"
+          - generic [ref=f5e408]: "title: The title of the post"
+          - generic [ref=f5e409]: "author: your name"
+          - generic [ref=f5e410]: "pubDatetime: 2022-09-21T05:17:19Z"
+          - generic [ref=f5e411]: "featured: true"
+          - generic [ref=f5e412]: "draft: true"
+          - generic [ref=f5e413]: "tags:"
+          - generic [ref=f5e414]: "- some"
+          - generic [ref=f5e415]: "- example"
+          - generic [ref=f5e416]: "- tags"
+          - generic [ref=f5e417]: "ogImage: ../../assets/images/example.png # src/assets/images/example.png"
+          - generic [ref=f5e418]: "# ogImage: \"https://example.org/remote-image.png\" # remote URL"
+          - generic [ref=f5e419]: "description: This is the example description of the example post."
+          - generic [ref=f5e420]: "canonicalURL: https://example.org/my-article-was-already-posted-here"
+          - generic [ref=f5e421]: "---"
+        - generic [ref=f5e422]: src/content/posts/sample-post.md
+        - button "Copy" [ref=f5e423] [cursor=pointer]
+      - heading "VS Code snippets (optional)" [level=3] [ref=f5e424]:
+        - text: VS Code snippets (optional)
+        - link [ref=f5e425] [cursor=pointer]:
+          - /url: "#vs-code-snippets-optional"
+          - text: "#"
+      - paragraph [ref=f5e426]: "AstroPaper includes workspace snippets to speed up creating new posts:"
+      - list [ref=f5e427]:
+        - listitem [ref=f5e428]:
+          - strong [ref=f5e429]: frontmatter
+          - text: ": inserts the recommended frontmatter block"
+        - listitem [ref=f5e430]:
+          - strong [ref=f5e431]: template
+          - text: ": inserts a basic post template (including"
+          - code [ref=f5e432]: "## Table of contents"
+          - text: )
+      - paragraph [ref=f5e433]:
+        - text: These snippets live in
+        - code [ref=f5e434]: .vscode/astro-paper.code-snippets
+        - text: . If you use VS Code (or Cursor), they should be available automatically when you open the workspace.
+      - heading "Callouts" [level=2] [ref=f5e435]:
+        - text: Callouts
+        - link [ref=f5e436] [cursor=pointer]:
+          - /url: "#callouts"
+          - text: "#"
+      - paragraph [ref=f5e437]:
+        - text: AstroPaper started supporting callouts in AstroPaper v6.1. They use a simple blockquote syntax powered by
+        - code [ref=f5e438]: rehype-callouts
+        - text: (Obsidian theme).
+      - paragraph [ref=f5e439]: "Here are the most commonly used types:"
+      - generic [ref=f5e440]:
+        - generic [ref=f5e441]: Note
+        - paragraph [ref=f5e448]: Supplementary information the reader should be aware of.
+      - generic [ref=f5e449]:
+        - generic [ref=f5e450]: Tip
+        - paragraph [ref=f5e456]: Helpful advice, shortcuts, or best practices.
+      - generic [ref=f5e457]:
+        - generic [ref=f5e458]: Warning
+        - paragraph [ref=f5e464]: Something that could go wrong or have unintended consequences.
+      - generic [ref=f5e465]:
+        - generic [ref=f5e466]: Danger
+        - paragraph [ref=f5e472]: Serious risk of failure, data loss, or incorrect behavior.
+      - generic [ref=f5e473]:
+        - generic [ref=f5e474]: Info
+        - paragraph [ref=f5e480]: Neutral informational context — less urgent than a note.
+      - generic [ref=f5e481]:
+        - generic [ref=f5e482]: Success
+        - paragraph [ref=f5e488]: Confirmation that something worked or is correct.
+      - paragraph [ref=f5e489]:
+        - text: "The full list of supported types includes:"
+        - code [ref=f5e490]: NOTE
+        - text: ","
+        - code [ref=f5e491]: ABSTRACT
+        - text: ","
+        - code [ref=f5e492]: INFO
+        - text: ","
+        - code [ref=f5e493]: TODO
+        - text: ","
+        - code [ref=f5e494]: TIP
+        - text: ","
+        - code [ref=f5e495]: SUCCESS
+        - text: ","
+        - code [ref=f5e496]: QUESTION
+        - text: ","
+        - code [ref=f5e497]: WARNING
+        - text: ","
+        - code [ref=f5e498]: FAILURE
+        - text: ","
+        - code [ref=f5e499]: DANGER
+        - text: ","
+        - code [ref=f5e500]: BUG
+        - text: ","
+        - code [ref=f5e501]: EXAMPLE
+        - text: ","
+        - code [ref=f5e502]: QUOTE
+        - text: — each with its own icon and color. Many types also accept aliases (e.g.
+        - code [ref=f5e503]: HINT
+        - text: and
+        - code [ref=f5e504]: IMPORTANT
+        - text: for
+        - code [ref=f5e505]: TIP
+        - text: ","
+        - code [ref=f5e506]: CAUTION
+        - text: for
+        - code [ref=f5e507]: WARNING
+        - text: ). See the
+        - link "rehype-callouts docs" [ref=f5e508] [cursor=pointer]:
+          - /url: https://github.com/lin-stephanie/rehype-callouts
+        - text: for the complete reference.
+      - heading "Collapsible callouts" [level=3] [ref=f5e509]:
+        - text: Collapsible callouts
+        - link [ref=f5e510] [cursor=pointer]:
+          - /url: "#collapsible-callouts"
+          - text: "#"
+      - paragraph [ref=f5e511]:
+        - text: Add
+        - code [ref=f5e512]: "-"
+        - text: after the type to make the callout collapsed by default, or
+        - code [ref=f5e513]: +
+        - text: "to make it expanded but collapsible:"
+      - group [ref=f5e514]:
+        - generic "Read before proceeding" [ref=f5e515] [cursor=pointer]
+      - group [ref=f5e523]:
+        - generic "Pro tip (expanded by default)" [ref=f5e524] [cursor=pointer]
+        - paragraph [ref=f5e533]: This starts open but can be collapsed. Great for optional detail you still want visible on first load.
+      - heading "Custom titles" [level=3] [ref=f5e534]:
+        - text: Custom titles
+        - link [ref=f5e535] [cursor=pointer]:
+          - /url: "#custom-titles"
+          - text: "#"
+      - paragraph [ref=f5e536]: "Replace the default type label with any title you like by adding text after the type:"
+      - generic [ref=f5e537]:
+        - generic [ref=f5e538]: Did you know?
+        - paragraph [ref=f5e545]: The text after the type becomes the callout’s heading. Leave it out and the type name is used automatically.
+      - heading "Syntax summary" [level=3] [ref=f5e546]:
+        - text: Syntax summary
+        - link [ref=f5e547] [cursor=pointer]:
+          - /url: "#syntax-summary"
+          - text: "#"
+      - generic [ref=f5e549]:
+        - code [ref=f5e550]:
+          - generic [ref=f5e551]: "> [!NOTE]"
+          - generic [ref=f5e552]: "> Supplementary information."
+          - generic [ref=f5e553]: "> [!WARNING]- Collapsed by default"
+          - generic [ref=f5e554]: "> Hidden until expanded."
+          - generic [ref=f5e555]: "> [!TIP]+ Expanded, but collapsible"
+          - generic [ref=f5e556]: "> Starts open."
+          - generic [ref=f5e557]: "> [!DANGER] Custom title"
+          - generic [ref=f5e558]: "> Replaces the default heading."
+        - button "Copy" [ref=f5e559] [cursor=pointer]
+      - heading "Adding table of contents" [level=2] [ref=f5e560]:
+        - text: Adding table of contents
+        - link [ref=f5e561] [cursor=pointer]:
+          - /url: "#adding-table-of-contents"
+          - text: "#"
+      - paragraph [ref=f5e562]:
+        - text: By default, a post does not include any table of contents (TOC). To include one, write
+        - code [ref=f5e563]: Table of contents
+        - text: as an h2 heading (
+        - code [ref=f5e564]: "##"
+        - text: "in Markdown) and place it where you want it to appear:"
+      - generic [ref=f5e566]:
+        - code [ref=f5e567]:
+          - generic [ref=f5e568]: "---"
+          - generic [ref=f5e569]: "# frontmatter"
+          - generic [ref=f5e570]: "---"
+          - generic [ref=f5e571]: Here are some recommendations, tips & tricks for creating new posts in AstroPaper blog theme.
+          - generic [ref=f5e572]: "+ ## Table of contents"
+          - generic [ref=f5e573]: <!-- the rest of the post -->
+        - button "Copy" [ref=f5e574] [cursor=pointer]
+      - heading "Headings" [level=2] [ref=f5e575]:
+        - text: Headings
+        - link [ref=f5e576] [cursor=pointer]:
+          - /url: "#headings"
+          - text: "#"
+      - paragraph [ref=f5e577]:
+        - text: There’s one thing to note about headings. AstroPaper blog posts use
+        - code [ref=f5e578]: title
+        - text: (from frontmatter) as the main heading of the post. Therefore, the rest of the headings in the post should use
+        - code [ref=f5e579]: h2
+        - text: ~
+        - code [ref=f5e580]: h6
+        - text: .
+      - paragraph [ref=f5e581]: This rule is not mandatory, but highly recommended for visual, accessibility, and SEO purposes.
+      - heading "Syntax Highlighting" [level=2] [ref=f5e582]:
+        - text: Syntax Highlighting
+        - link [ref=f5e583] [cursor=pointer]:
+          - /url: "#syntax-highlighting"
+          - text: "#"
+      - paragraph [ref=f5e584]:
+        - text: AstroPaper uses
+        - link "Shiki" [ref=f5e585] [cursor=pointer]:
+          - /url: https://shiki.style/
+        - text: as the default syntax highlighter, with
+        - link "@shikijs/transformers" [ref=f5e586] [cursor=pointer]:
+          - /url: https://shiki.style/packages/transformers
+        - text: "for enhanced fenced code blocks. If you don’t want to use the transformers, you can remove them:"
+      - generic [ref=f5e588]:
+        - code [ref=f5e589]:
+          - generic [ref=f5e590]: pnpm remove @shikijs/transformers
+        - button "Copy" [ref=f5e591] [cursor=pointer]
+      - generic [ref=f5e593]:
+        - code [ref=f5e594]:
+          - generic [ref=f5e595]: // ...
+          - generic [ref=f5e596]: "- import {"
+          - generic [ref=f5e597]: "- transformerNotationDiff,"
+          - generic [ref=f5e598]: "- transformerNotationHighlight,"
+          - generic [ref=f5e599]: "- transformerNotationWordHighlight,"
+          - generic [ref=f5e600]: "- } from \"@shikijs/transformers\";"
+          - generic [ref=f5e601]: "export default defineConfig({"
+          - generic [ref=f5e602]: // ...
+          - generic [ref=f5e603]: "markdown: {"
+          - generic [ref=f5e604]: "remarkPlugins: [remarkToc, [remarkCollapse, { test: \"Table of contents\" }]],"
+          - generic [ref=f5e605]: "shikiConfig: {"
+          - generic [ref=f5e606]: "themes: { light: \"min-light\", dark: \"night-owl\" },"
+          - generic [ref=f5e607]: "defaultColor: false,"
+          - generic [ref=f5e608]: "wrap: false,"
+          - generic [ref=f5e609]: "transformers: ["
+          - generic [ref=f5e610]: transformerFileName(),
+          - generic [ref=f5e611]: "- transformerNotationHighlight(),"
+          - generic [ref=f5e612]: "- transformerNotationWordHighlight(),"
+          - generic [ref=f5e613]: "- transformerNotationDiff({ matchAlgorithm: \"v3\" }),"
+          - generic [ref=f5e614]: "],"
+          - generic [ref=f5e615]: "},"
+          - generic [ref=f5e616]: "},"
+          - generic [ref=f5e617]: // ...
+          - generic [ref=f5e618]: "});"
+        - generic [ref=f5e619]: astro.config.ts
+        - button "Copy" [ref=f5e620] [cursor=pointer]
+      - heading "Storing Images for Blog Content" [level=2] [ref=f5e621]:
+        - text: Storing Images for Blog Content
+        - link [ref=f5e622] [cursor=pointer]:
+          - /url: "#storing-images-for-blog-content"
+          - text: "#"
+      - paragraph [ref=f5e623]: Here are two methods for storing images and using them inside a markdown file.
+      - generic [ref=f5e624]:
+        - generic [ref=f5e625]: Important
+        - paragraph [ref=f5e631]:
+          - text: If you need to style optimized images in markdown, you should
+          - link "use MDX" [ref=f5e632] [cursor=pointer]:
+            - /url: https://docs.astro.build/en/guides/images/#images-in-mdx-files
+          - text: .
+      - heading [level=3] [ref=f5e633]:
+        - text: Inside
+        - code [ref=f5e634]: src/assets/
+        - text: directory (recommended)
+        - link [ref=f5e635] [cursor=pointer]:
+          - /url: "#inside-srcassets-directory-recommended"
+          - text: "#"
+      - paragraph [ref=f5e636]:
+        - text: You can store images inside the
+        - code [ref=f5e637]: src/assets/
+        - text: directory. These images will be automatically optimized by Astro through the
+        - link "Image Service API" [ref=f5e638] [cursor=pointer]:
+          - /url: https://docs.astro.build/en/reference/image-service-reference/
+        - text: .
+      - paragraph [ref=f5e639]:
+        - text: You can use a relative path or alias path (
+        - code [ref=f5e640]: "@/assets/"
+        - text: ) to reference these images.
+      - paragraph [ref=f5e641]:
+        - text: "Example: suppose you want to display"
+        - code [ref=f5e642]: example.jpg
+        - text: whose path is
+        - code [ref=f5e643]: src/assets/images/example.jpg
+        - text: .
+      - generic [ref=f5e645]:
+        - code [ref=f5e646]:
+          - generic [ref=f5e647]: "![something](@/assets/images/example.jpg)"
+          - generic [ref=f5e648]: <!-- OR -->
+          - generic [ref=f5e649]: "![something](../../assets/images/example.jpg)"
+          - generic [ref=f5e650]: <!-- Using img tag or Image component won't work in markdown ❌ -->
+          - generic [ref=f5e651]: <img src="@/assets/images/example.jpg" alt="something">
+          - generic [ref=f5e652]: <!-- ^^ This is wrong -->
+        - button "Copy" [ref=f5e653] [cursor=pointer]
+      - generic [ref=f5e654]:
+        - generic [ref=f5e655]: Tip
+        - paragraph [ref=f5e661]:
+          - text: Technically, you can store images inside any directory under
+          - code [ref=f5e662]: src
+          - text: .
+          - code [ref=f5e663]: src/assets
+          - text: is just a recommendation.
+      - heading [level=3] [ref=f5e664]:
+        - text: Inside
+        - code [ref=f5e665]: public/
+        - text: directory
+        - link [ref=f5e666] [cursor=pointer]:
+          - /url: "#inside-public-directory"
+          - text: "#"
+      - paragraph [ref=f5e667]:
+        - text: You can store images inside the
+        - code [ref=f5e668]: public/
+        - text: directory. Keep in mind that images stored in
+        - code [ref=f5e669]: public/
+        - text: remain untouched by Astro, meaning they will be unoptimized and you need to handle image optimization yourself.
+      - paragraph [ref=f5e670]:
+        - text: For these images, use an absolute path. They can be displayed using
+        - link "markdown image syntax" [ref=f5e671] [cursor=pointer]:
+          - /url: https://www.markdownguide.org/basic-syntax/#images-1
+        - text: or an HTML
+        - code [ref=f5e672]: img
+        - text: tag.
+      - paragraph [ref=f5e673]:
+        - text: "Example: assume"
+        - code [ref=f5e674]: example.jpg
+        - text: is located at
+        - code [ref=f5e675]: public/assets/images/example.jpg
+        - text: .
+      - generic [ref=f5e677]:
+        - code [ref=f5e678]:
+          - generic [ref=f5e679]: "![something](/assets/images/example.jpg)"
+          - generic [ref=f5e680]: <!-- OR -->
+          - generic [ref=f5e681]: <img src="/assets/images/example.jpg" alt="something">
+        - button "Copy" [ref=f5e682] [cursor=pointer]
+      - heading "Bonus" [level=2] [ref=f5e683]:
+        - text: Bonus
+        - link [ref=f5e684] [cursor=pointer]:
+          - /url: "#bonus"
+          - text: "#"
+      - heading "Image compression" [level=3] [ref=f5e685]:
+        - text: Image compression
+        - link [ref=f5e686] [cursor=pointer]:
+          - /url: "#image-compression"
+          - text: "#"
+      - generic [ref=f5e687]:
+        - generic [ref=f5e688]: Warning
+        - paragraph [ref=f5e694]:
+          - text: When putting images in a blog post (especially those in the
+          - code [ref=f5e695]: public/
+          - text: directory), compress them first. Unoptimized images significantly hurt page performance.
+      - paragraph [ref=f5e696]: "Recommended image compression sites:"
+      - list [ref=f5e697]:
+        - listitem [ref=f5e698]:
+          - link "TinyPng" [ref=f5e699] [cursor=pointer]:
+            - /url: https://tinypng.com/
+        - listitem [ref=f5e700]:
+          - link "TinyJPG" [ref=f5e701] [cursor=pointer]:
+            - /url: https://tinyjpg.com/
+      - heading "OG Image" [level=3] [ref=f5e702]:
+        - text: OG Image
+        - link [ref=f5e703] [cursor=pointer]:
+          - /url: "#og-image"
+          - text: "#"
+      - paragraph [ref=f5e704]:
+        - text: The default OG image will be used if a post does not specify one. Though not required, an OG image relevant to the post should be specified in the frontmatter. The recommended size for OG images is
+        - strong [ref=f5e705]:
+          - emphasis [ref=f5e706]: 1200 X 640
+        - text: px.
+      - generic [ref=f5e707]:
+        - generic [ref=f5e708]: Tip
+        - paragraph [ref=f5e714]:
+          - text: Since AstroPaper v1.4.0, OG images are generated automatically if not specified. Check out
+          - link "the announcement" [ref=f5e715] [cursor=pointer]:
+            - /url: https://astro-paper.pages.dev/posts/dynamic-og-image-generation-in-astropaper-blog-posts/
+          - text: .
+    - separator [ref=f5e716]
+    - button "Back to top" [ref=f5e718] [cursor=pointer]
+    - list [ref=f5e723]:
+      - listitem [ref=f5e724]:
+        - link "docs" [ref=f5e725] [cursor=pointer]:
+          - /url: /tags/docs/
+    - generic [ref=f5e729]:
+      - generic [ref=f5e730]: "Share this post:"
+      - generic [ref=f5e731]:
+        - link "Share this post on Linkedin" [ref=f5e732] [cursor=pointer]:
+          - /url: https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4321/posts/adding-new-posts-in-astropaper-theme/
+        - link "Share this post on X" [ref=f5e738] [cursor=pointer]:
+          - /url: https://x.com/intent/post?url=http://localhost:4321/posts/adding-new-posts-in-astropaper-theme/
+        - link "Share this post via email" [ref=f5e743] [cursor=pointer]:
+          - /url: mailto:?subject=See%20this%20post&body=http://localhost:4321/posts/adding-new-posts-in-astropaper-theme/
+    - separator [ref=f5e749]
+    - link "Previous Post Dynamic OG image generation in AstroPaper blog posts" [ref=f5e751] [cursor=pointer]:
+      - /url: /posts/dynamic-og-image-generation-in-astropaper-blog-posts/
+      - generic [ref=f5e755]:
+        - text: Previous Post
+        - generic [ref=f5e756]: Dynamic OG image generation in AstroPaper blog posts
+  - contentinfo [ref=f5e757]:
+    - generic [ref=f5e758]:
+      - generic [ref=f5e759]:
+        - link "Chaitanya Krishna on Github" [ref=f5e760] [cursor=pointer]:
+          - /url: https://github.com/vebb374
+        - link "Chaitanya Krishna on Linkedin" [ref=f5e765] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/chaitanya-krishna-371859176/
+        - link "Send an email to Chaitanya Krishna" [ref=f5e771] [cursor=pointer]:
+          - /url: mailto:yendrapallichaitanya@proton.me
+      - generic [ref=f5e777]:
+        - generic [ref=f5e778]: Copyright © 2026
+        - generic [ref=f5e779]: "|"
+        - generic [ref=f5e780]: All rights reserved.
+  - generic [ref=f5e167]:
+    - button [ref=f5e168]
+    - button [ref=f5e174]
+    - button [ref=f5e178]
+    - button [ref=f5e183]
+  - generic [ref=f5e785]: Adding new posts in AstroPaper theme | Chaitanya Krishna
