@@ -1,0 +1,173 @@
+---
+/**
+ * Read aloud — Web Speech API, no network, no key, nothing leaves the browser.
+ *
+ * Reads the rendered article using the visitor's own OS voices. Chosen over a
+ * cloud TTS because this is an accessibility affordance, not a product voice:
+ * it costs nothing per play, works offline, and sends no text anywhere.
+ *
+ * If you later want a consistent voice, pre-generate an MP3 per post at build
+ * time and swap this for an <audio> element — see knowledge-graph/blog/STACK.md.
+ */
+---
+
+<div class="read-aloud my-4 flex items-center gap-2" hidden data-read-aloud>
+  <button
+    type="button"
+    data-ra-toggle
+    aria-pressed="false"
+    class="border-border text-foreground hover:bg-muted focus-visible:outline-accent inline-flex items-center gap-2 rounded border px-3 py-1.5 text-sm focus-visible:outline-2"
+  >
+    <span data-ra-icon-play class="inline-flex">
+      <svg
+        aria-hidden="true"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+      </svg>
+    </span>
+    <span data-ra-icon-pause class="inline-flex" hidden>
+      <svg
+        aria-hidden="true"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <rect x="6" y="4" width="4" height="16"></rect>
+        <rect x="14" y="4" width="4" height="16"></rect>
+      </svg>
+    </span>
+    <span data-ra-label>Read aloud</span>
+  </button>
+
+  <button
+    type="button"
+    data-ra-stop
+    hidden
+    class="border-border text-muted-foreground hover:bg-muted focus-visible:outline-accent rounded border px-3 py-1.5 text-sm focus-visible:outline-2"
+  >
+    Stop
+  </button>
+
+  <span class="sr-only" role="status" aria-live="polite" data-ra-status></span>
+</div>
+
+<script is:inline data-astro-rerun>
+  (() => {
+    const root = document.querySelector("[data-read-aloud]");
+    const article = document.getElementById("article");
+    if (!root || !article || !("speechSynthesis" in window)) return;
+
+    // Only reveal the control once we know the API exists.
+    root.hidden = false;
+
+    const toggle = root.querySelector("[data-ra-toggle]");
+    const stopBtn = root.querySelector("[data-ra-stop]");
+    const label = root.querySelector("[data-ra-label]");
+    const iconPlay = root.querySelector("[data-ra-icon-play]");
+    const iconPause = root.querySelector("[data-ra-icon-pause]");
+    const status = root.querySelector("[data-ra-status]");
+
+    const synth = window.speechSynthesis;
+    let speaking = false;
+    let keepAlive = null;
+
+    /** Strip things that should not be spoken: code blocks, the TOC, heading anchors. */
+    function articleText() {
+      const clone = article.cloneNode(true);
+      clone
+        .querySelectorAll("pre, .heading-link, #table-of-contents, details")
+        .forEach(n => n.remove());
+      return clone.innerText.replace(/\s+/g, " ").trim();
+    }
+
+    /**
+     * Chrome silently stops synthesis after ~15s. The documented workaround is
+     * to pause/resume on a timer while speaking.
+     */
+    function startKeepAlive() {
+      stopKeepAlive();
+      keepAlive = setInterval(() => {
+        if (!synth.speaking) return stopKeepAlive();
+        synth.pause();
+        synth.resume();
+      }, 10000);
+    }
+    function stopKeepAlive() {
+      if (keepAlive) clearInterval(keepAlive);
+      keepAlive = null;
+    }
+
+    function paint(state) {
+      const playing = state === "playing";
+      const idle = state === "idle";
+      toggle.setAttribute("aria-pressed", String(playing));
+      iconPlay.hidden = playing;
+      iconPause.hidden = !playing;
+      label.textContent = playing ? "Pause" : idle ? "Read aloud" : "Resume";
+      stopBtn.hidden = idle;
+      status.textContent = playing
+        ? "Reading article aloud"
+        : idle
+          ? ""
+          : "Paused";
+    }
+
+    function stop() {
+      synth.cancel();
+      stopKeepAlive();
+      speaking = false;
+      paint("idle");
+    }
+
+    function speak() {
+      const text = articleText();
+      if (!text) return;
+      // Cancel first: some browsers refuse to queue over a stale utterance.
+      synth.cancel();
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = document.documentElement.lang || "en";
+      utterance.rate = 1;
+      utterance.onend = stop;
+      utterance.onerror = stop;
+
+      synth.speak(utterance);
+      speaking = true;
+      startKeepAlive();
+      paint("playing");
+    }
+
+    toggle.addEventListener("click", () => {
+      if (!speaking) return speak();
+      if (synth.paused) {
+        synth.resume();
+        startKeepAlive();
+        paint("playing");
+      } else {
+        synth.pause();
+        stopKeepAlive();
+        paint("paused");
+      }
+    });
+
+    stopBtn.addEventListener("click", stop);
+
+    // Never let audio outlive the page (view transitions, tab close, back nav).
+    document.addEventListener("astro:before-swap", stop);
+    window.addEventListener("pagehide", stop);
+    window.addEventListener("beforeunload", stop);
+  })();
+</script>
