@@ -4,7 +4,7 @@ export default defineAstroPaperConfig({
   site: {
     // Live. Must stay a ROOT domain, not a sub-path —
     // Astro's asset resolution fights sub-path hosting.
-    url: "https://sametwice.vercel.app/",
+    url: "https://qacraft.vercel.app/",
     title: "Chaitanya Krishna",
     description:
       "Notes on testing systems that don't behave the same way twice — flaky browsers, parallel workers, LLM judges, and the AI agents built to test them.",
