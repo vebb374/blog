@@ -1,37 +1,22 @@
 ---
 title: "About"
-description: "A bit about me and this blog."
+description: "Chaitanya Krishna — testing systems that don't behave the same way twice."
 ---
 
-AstroPaper is a minimal, accessible and SEO-friendly blog theme built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/).
+I'm Chaitanya. I work on quality engineering, and for the last few years that has mostly meant one problem wearing different costumes: **systems that don't give you the same answer twice.**
 
-![Astro Paper](@/assets/images/astropaper-og.jpg)
+In 2023 that looked like a Selenium suite fanned out across AWS Lambda, where the flakiness turned out to be a boto session shared across threads. In 2025 it was a Playwright framework I built from the first commit, where the flakiest test was fixed by deleting forty thousand rows of pre-generated test data and deriving the value per worker instead. In 2026 it looks like an LLM judge whose prose said "no violations" while its score said 0.40.
 
-AstroPaper provides a solid foundation for blogs, or even portfolios\_ with full markdown support, built-in dark mode, and a clean layout that works out-of-the-box.
+Same bug, three stacks. It's almost always shared state, and it's almost never in the test.
 
-The blog posts in this theme also serve as guides, docs or example articles\_ making AstroPaper a flexible starting point for your next content-driven site.
+These days I build AI agents that test AI products — a synthetic candidate that sits real interviews, and evaluation systems that score what came back. That work throws off more interesting failures per week than anything else I've done.
 
-## Features
+## What you'll find here
 
-AstroPaper comes with a set of useful features that make content publishing easy and effective:
+Write-ups with the mechanism in them. If a post says something was slow, it says what the measurement was and what the number became. If something broke, it says what I thought was wrong first — usually two or three wrong things before the real one.
 
-- SEO-friendly
-- Fast performance
-- Light & dark mode
-- Highly customizable
-- Organizable blog posts
-- Responsive & accessible
-- Static search with [PageFind](https://pagefind.app/)
-- Automatic social image generation
+I try not to publish anything I haven't actually run.
 
-and so much more.
+## Elsewhere
 
-## Show your support
-
-If you like [AstroPaper](https://github.com/satnaing/astro-paper), consider giving it a star ⭐️.
-
-Found a bug 🐛 or have an improvement ✨ in mind? Feel free to open an [issue](https://github.com/satnaing/astro-paper/issues), submit a [pull request](https://github.com/satnaing/astro-paper/pulls) or start a [discussion](https://github.com/satnaing/astro-paper/discussions).
-
-If you find this theme helpful, you can also [sponsor me on GitHub](https://github.com/sponsors/satnaing) or [buy me a coffee](https://buymeacoffee.com/satnaing) to show your support — every penny counts.
-
-Kyay zuu! 🙏🏼
+The links in the header are the reliable ones. If something here is wrong or you've hit the same problem differently, I'd genuinely like to hear about it.
