@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!--
+  diagram-design · type selection (SKILL.md §3)
+  ---------------------------------------------
+  Chosen type: ARCHITECTURE (components + connections in a system), laid out as
+  two closed cycles that share one component.
+
+  Why not Sequence: a sequence diagram runs time top→down and physically cannot
+  close. The whole claim here is that the last message feeds the first, so the
+  figure must read as a ring, not a ladder.
+  Why not Loop (flywheel): Loop requires 5–8 ring stations plus exactly one
+  state-accumulating hub. This system has 6 components but only two of them are
+  process steps; forcing them onto a ring would invent stations.
+  Why not Data flow: no role/lane axis carries meaning here.
+
+  Architecture wins: real components, real wiring, and an editorial layout that
+  routes both return paths back into the agent so the cycles close on the page.
+
+  Size preset: doc-wide (1280×720) + 40px legend strip → viewBox 1280×760.
+  Type ramp: presentation (16px node names) — this is a blog hero image.
+  Style: branded to the live blog theme (paper #fdfdfd, ink #282728,
+  accent #006cac, surface #e6e6e6, border #ece9e9). Accent on exactly 2
+  elements: the sendResponse node and the reply-is-the-tool-result path.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One generate() call is the whole interview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-paper:   #fdfdfd;
+      --color-ink:     #282728;
+      --color-muted:   #6b6a6b;
+      --color-soft:    #7a797a;
+      --color-surface: #e6e6e6;
+      --color-border:  #ece9e9;
+      --color-accent:  #006cac;
+      --font-sans:     'Geist', system-ui, sans-serif;
+      --font-serif:    'Instrument Serif', serif;
+      --font-mono:     'Geist Mono', ui-monospace, monospace;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-paper);
+      color: var(--color-ink);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+    }
+
+    .frame { max-width: 1280px; width: 100%; }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.4vw + 0.75rem, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--color-ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .standfirst {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--color-muted);
+      max-width: 62ch;
+      margin-bottom: 1.5rem;
+    }
+
+    svg { width: 100%; display: block; }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Architecture · Agent loop</p>
+    <h1>One generate() call is the whole interview</h1>
+    <p class="standfirst">The agent has no vision and no microphone. Every tool result comes back stamped with the surface it landed on, and <code>sendResponse</code> returns the interviewer&rsquo;s reply as its own result &mdash; so the SDK&rsquo;s tool loop <em>is</em> the conversation loop. There is no orchestrator.</p>
+
+    <svg viewBox="0 0 1280 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="agent-loop-title agent-loop-desc">
+      <title id="agent-loop-title">One generate() call is the whole interview</title>
+      <desc id="agent-loop-desc">An agent emits tool calls into a live Playwright-driven interview page with three surfaces, receives every tool result stamped with the surface state re-read from the DOM, and reaches the AI interviewer by injecting text over a WebSocket; the interviewer's reply returns as the sendResponse tool result, closing the loop without an orchestrator.</desc>
+      <defs>
+        <marker id="al-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#6b6a6b"/></marker>
+        <marker id="al-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#006cac"/></marker>
+      </defs>
+
+      <rect width="100%" height="100%" fill="#fdfdfd"/>
+
+      <!-- ══ ZONE: the live interview page (drawn first) ══ -->
+      <rect x="464" y="56" width="608" height="152" rx="8" fill="rgba(40,39,40,0.02)" stroke="rgba(40,39,40,0.10)" stroke-width="0.8"/>
+      <rect x="472" y="60" width="208" height="14" rx="2" fill="#fdfdfd"/>
+      <text x="480" y="71" fill="rgba(40,39,40,0.45)" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">LIVE INTERVIEW PAGE · PLAYWRIGHT</text>
+
+      <!-- ══ CONNECTORS (drawn before boxes) ══ -->
+
+      <!-- Agent → page : tool call -->
+      <path d="M 184,280 V 156 Q 184,148 192,148 H 460" fill="none" stroke="#6b6a6b" stroke-width="1.2" marker-end="url(#al-arrow)"/>
+
+      <!-- Page → agent : tool result, dashed return -->
+      <path d="M 768,208 V 352 Q 768,360 760,360 H 308" fill="none" stroke="#6b6a6b" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#al-arrow)"/>
+
+      <!-- Agent → sendResponse -->
+      <path d="M 224,440 V 536 Q 224,544 232,544 H 396" fill="none" stroke="#6b6a6b" stroke-width="1.2" marker-end="url(#al-arrow)"/>
+
+      <!-- sendResponse → interviewer : text over websocket -->
+      <line x1="600" y1="544" x2="796" y2="544" stroke="#6b6a6b" stroke-width="1.2" marker-end="url(#al-arrow)"/>
+
+      <!-- Interviewer → agent : THE FOCAL PATH — the reply is the tool result -->
+      <path d="M 900,592 V 624 Q 900,632 892,632 H 152 Q 144,632 144,624 V 444" fill="none" stroke="#006cac" stroke-width="1.6" marker-end="url(#al-arrow-accent)"/>
+
+      <!-- ══ CONNECTOR LABELS ══ -->
+
+      <!-- tool call -->
+      <rect x="316" y="124" width="88" height="16" rx="2" fill="#fdfdfd"/>
+      <text x="360" y="136" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">TOOL CALL</text>
+
+      <!-- tool result -->
+      <rect x="328" y="320" width="128" height="32" rx="2" fill="#fdfdfd"/>
+      <text x="392" y="332" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">TOOL RESULT</text>
+      <text x="392" y="348" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">surface=&lt;state&gt;</text>
+
+      <!-- websocket -->
+      <rect x="632" y="504" width="128" height="32" rx="2" fill="#fdfdfd"/>
+      <text x="696" y="516" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">TEXT OVER WS</text>
+      <text x="696" y="532" fill="#7a797a" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">no TTS · no mic</text>
+
+      <!-- the reply is the tool result (accent) -->
+      <rect x="236" y="592" width="128" height="32" rx="2" fill="#fdfdfd"/>
+      <text x="300" y="604" fill="#006cac" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">THE REPLY IS</text>
+      <text x="300" y="620" fill="#006cac" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">THE TOOL RESULT</text>
+
+      <!-- ══ NODES ══ -->
+
+      <!-- ToolLoopAgent -->
+      <rect x="64" y="280" width="240" height="160" rx="6" fill="#fdfdfd"/>
+      <rect x="64" y="280" width="240" height="160" rx="6" fill="#ffffff" stroke="#282728" stroke-width="1"/>
+      <rect x="76" y="292" width="56" height="16" rx="2" fill="transparent" stroke="rgba(40,39,40,0.40)" stroke-width="0.8"/>
+      <text x="104" y="304" fill="#282728" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.14em">AI SDK</text>
+      <text x="184" y="336" fill="#282728" font-size="16" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">ToolLoopAgent</text>
+      <text x="184" y="364" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">toolChoice: required</text>
+      <text x="184" y="384" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">stopWhen: endInterview</text>
+      <text x="184" y="412" fill="#7a797a" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">no vision · no microphone</text>
+
+      <!-- Surface: Conversation -->
+      <rect x="488" y="88" width="160" height="96" rx="6" fill="#fdfdfd"/>
+      <rect x="488" y="88" width="160" height="96" rx="6" fill="rgba(40,39,40,0.05)" stroke="#6b6a6b" stroke-width="1"/>
+      <text x="568" y="136" fill="#282728" font-size="16" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Conversation</text>
+      <text x="568" y="160" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">chat turns</text>
+
+      <!-- Surface: Code editor -->
+      <rect x="688" y="88" width="160" height="96" rx="6" fill="#fdfdfd"/>
+      <rect x="688" y="88" width="160" height="96" rx="6" fill="rgba(40,39,40,0.05)" stroke="#6b6a6b" stroke-width="1"/>
+      <text x="768" y="136" fill="#282728" font-size="16" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Code editor</text>
+      <text x="768" y="160" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">type · run</text>
+
+      <!-- Surface: Design board -->
+      <rect x="888" y="88" width="160" height="96" rx="6" fill="#fdfdfd"/>
+      <rect x="888" y="88" width="160" height="96" rx="6" fill="rgba(40,39,40,0.05)" stroke="#6b6a6b" stroke-width="1"/>
+      <text x="968" y="136" fill="#282728" font-size="16" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Design board</text>
+      <text x="968" y="160" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">whiteboard</text>
+
+      <!-- sendResponse — FOCAL -->
+      <rect x="400" y="496" width="200" height="96" rx="6" fill="#fdfdfd"/>
+      <rect x="400" y="496" width="200" height="96" rx="6" fill="rgba(0,108,172,0.08)" stroke="#006cac" stroke-width="1.2"/>
+      <rect x="412" y="508" width="44" height="16" rx="2" fill="transparent" stroke="rgba(0,108,172,0.50)" stroke-width="0.8"/>
+      <text x="434" y="520" fill="#006cac" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.14em">TOOL</text>
+      <text x="500" y="552" fill="#282728" font-size="16" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">sendResponse</text>
+      <text x="500" y="576" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">speaks · then blocks</text>
+
+      <!-- Interviewer -->
+      <rect x="800" y="496" width="200" height="96" rx="6" fill="#fdfdfd"/>
+      <rect x="800" y="496" width="200" height="96" rx="6" fill="rgba(40,39,40,0.03)" stroke="rgba(40,39,40,0.30)" stroke-width="1"/>
+      <rect x="812" y="508" width="72" height="16" rx="2" fill="transparent" stroke="rgba(40,39,40,0.30)" stroke-width="0.8"/>
+      <text x="848" y="520" fill="#6b6a6b" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.14em">EXTERNAL</text>
+      <text x="900" y="552" fill="#282728" font-size="16" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Interviewer</text>
+      <text x="900" y="576" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">AI on a video call</text>
+
+      <!-- ══ EDITORIAL CALLOUTS (2 max) ══ -->
+
+      <!-- 1. why the loop never stalls -->
+      <path d="M 100,128 Q 96,200 116,274" fill="none" stroke="rgba(40,39,40,0.40)" stroke-width="1" stroke-dasharray="4,3"/>
+      <circle cx="120" cy="280" r="2" fill="#282728"/>
+      <text x="64" y="92" fill="#282728" font-size="16" font-style="italic" font-family="'Instrument Serif', serif">toolChoice: required means the agent</text>
+      <text x="64" y="116" fill="#282728" font-size="16" font-style="italic" font-family="'Instrument Serif', serif">can never just talk. It can only act.</text>
+
+      <!-- 2. where the surface stamp comes from -->
+      <path d="M 836,352 Q 800,328 776,306" fill="none" stroke="rgba(40,39,40,0.40)" stroke-width="1" stroke-dasharray="4,3"/>
+      <circle cx="768" cy="300" r="2" fill="#282728"/>
+      <text x="800" y="372" fill="#282728" font-size="16" font-style="italic" font-family="'Instrument Serif', serif">Every tool result re-reads the live DOM</text>
+      <text x="800" y="396" fill="#282728" font-size="16" font-style="italic" font-family="'Instrument Serif', serif">before it returns. State is never stored.</text>
+
+      <!-- ══ LEGEND ══ -->
+      <line x1="40" y1="676" x2="1240" y2="676" stroke="rgba(40,39,40,0.12)" stroke-width="0.8"/>
+      <text x="40" y="700" fill="#7a797a" font-size="12" font-family="'Geist Mono', monospace" letter-spacing="0.14em">LEGEND</text>
+
+      <line x1="144" y1="696" x2="176" y2="696" stroke="#6b6a6b" stroke-width="1.2"/>
+      <text x="184" y="700" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace">call into the page</text>
+
+      <line x1="456" y1="696" x2="488" y2="696" stroke="#6b6a6b" stroke-width="1" stroke-dasharray="5,4"/>
+      <text x="496" y="700" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace">result back to the agent</text>
+
+      <line x1="800" y1="696" x2="832" y2="696" stroke="#006cac" stroke-width="1.6"/>
+      <text x="840" y="700" fill="#006cac" font-size="12" font-family="'Geist Mono', monospace">the turn boundary</text>
+    </svg>
+  </div>
+</body>
+</html>

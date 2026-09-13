@@ -39,6 +39,9 @@ Which means the tool result is the next turn. The SDK's tool loop and the conver
 
 I did not design that. I wrote the obvious thing, noticed the outer loop had nothing left to do, and deleted it.
 
+![Architecture of the candidate rig: the ToolLoopAgent calls into a live Playwright-driven interview page across three surfaces, every tool result returns stamped with the current surface, and sendResponse sends text to the interviewer over a WebSocket whose reply becomes the next tool result.](../../assets/posts/agent-loop.png)
+
+
 ## The agent has no eyes
 
 The model cannot see the page. It gets text, and text only.
@@ -74,9 +77,11 @@ else                                            currentSurface = "none";
 
 `design` is checked first because the whiteboard visually covers the coding panel. Check in the other order and an open whiteboard reports `ide`, and the agent tries to type code into a canvas.
 
-`designProblem` is checked last, after both coding states. That makes one class of bug structurally impossible rather than merely unlikely: a coding-only interview can never report a design state, because by the time that branch is reachable, both coding checks have already failed.
+`designProblem` is checked last, after both coding states, and the reason is worth being precise about. The design-brief check is "the panel is showing and there is no Solve it button". I could not establish that the coding problem phase never renders a panel that would also satisfy it. Rather than go and prove it, I ordered the checks so that it cannot matter: by the time that branch is reachable, both coding checks have already failed, so a programming interview can never be routed down the design path.
 
-That is the part I would keep if I rebuilt this. Not the specific order — the habit of making the illegal state unreachable instead of writing a test that asserts it doesn't happen.
+![The surface state machine: five states probed in a fixed order — design, ide, problem, designProblem, none — each identified by a concrete DOM condition, with designProblem probed fourth so it is unreachable in a coding-only interview.](../../assets/posts/surface-state.png)
+
+That is the part I would keep if I rebuilt this. Not the specific order — the habit of spending ordering, which is free, instead of spending a proof. An assertion tells you the bug happened. A structure that cannot produce it never asks.
 
 ## Tools return errors as strings
 
@@ -124,4 +129,4 @@ Give the agent fewer tools and better results. Navigation tools looked like capa
 
 Never let a tool throw in a loop where a throw ends a live session. Return the error as data and let the model decide.
 
-And make the illegal states unreachable by construction where you can. An assertion tells you the bug happened. An ordering that cannot produce the bug is better, and usually cheaper.
+And when you catch yourself about to prove that some state can't happen, check whether you can just order things so the question never comes up. Proofs rot. Ordering doesn't.

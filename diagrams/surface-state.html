@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!--
+  diagram-design · type selection (SKILL.md §3)
+  ---------------------------------------------
+  Chosen type: STATE MACHINE ("states + transitions + guards").
+  Five states, four real transitions, one non-transition relationship (the
+  design board occluding the coding panel) drawn dashed and named as such in
+  the legend so it is never mistaken for an edge.
+
+  The probe rank rides inside each state as a badge chip (a mask fully inside a
+  node — permitted by §6 rule 6), which is what makes "first match wins"
+  legible in place rather than as a separate ladder.
+
+  Size preset: doc-wide (1280×720) + 40px legend strip → viewBox 1280×760.
+  Type ramp: presentation (16px state names) — this is a blog hero image.
+  Style: branded to the live blog theme (paper #fdfdfd, ink #282728,
+  accent #006cac, surface #e6e6e6, border #ece9e9). Accent on exactly 1
+  element: designProblem, the structurally unreachable state.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The surface is a probe order, not a variable</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-paper:   #fdfdfd;
+      --color-ink:     #282728;
+      --color-muted:   #6b6a6b;
+      --color-soft:    #7a797a;
+      --color-surface: #e6e6e6;
+      --color-border:  #ece9e9;
+      --color-accent:  #006cac;
+      --font-sans:     'Geist', system-ui, sans-serif;
+      --font-serif:    'Instrument Serif', serif;
+      --font-mono:     'Geist Mono', ui-monospace, monospace;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-paper);
+      color: var(--color-ink);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+    }
+
+    .frame { max-width: 1280px; width: 100%; }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.4vw + 0.75rem, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--color-ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .standfirst {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--color-muted);
+      max-width: 62ch;
+      margin-bottom: 1.5rem;
+    }
+
+    svg { width: 100%; display: block; }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">State machine · Surface detection</p>
+    <h1>The surface is a probe order, not a variable</h1>
+    <p class="standfirst">The surface stamp is re-derived from the live DOM before every tool returns &mdash; it is never stored and trusted. The probe runs in a fixed order and the first match wins, which quietly makes one of the five states unreachable for a coding-only interview.</p>
+
+    <svg viewBox="0 0 1280 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="surface-state-title surface-state-desc">
+      <title id="surface-state-title">The surface is a probe order, not a variable</title>
+      <desc id="surface-state-desc">State machine of the five interview surfaces — none, problem, ide, designProblem and design — showing each state's fixed probe rank, the transitions between them, and the fact that the design board occludes the coding panel, which is why design is probed first and why designProblem, probed fourth, is unreachable in a coding-only interview.</desc>
+      <defs>
+        <marker id="ss-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#6b6a6b"/></marker>
+      </defs>
+
+      <rect width="100%" height="100%" fill="#fdfdfd"/>
+
+      <!-- ══ TRANSITIONS (drawn before states) ══ -->
+
+      <!-- start → none -->
+      <line x1="84" y1="360" x2="124" y2="360" stroke="#6b6a6b" stroke-width="1.2" marker-end="url(#ss-arrow)"/>
+
+      <!-- none → problem -->
+      <path d="M 304,336 H 360 Q 368,336 368,328 V 240 Q 368,232 376,232 H 428" fill="none" stroke="#6b6a6b" stroke-width="1.2" marker-end="url(#ss-arrow)"/>
+
+      <!-- none → designProblem -->
+      <path d="M 304,384 H 392 Q 400,384 400,392 V 496 Q 400,504 408,504 H 428" fill="none" stroke="#6b6a6b" stroke-width="1.2" marker-end="url(#ss-arrow)"/>
+
+      <!-- problem → ide -->
+      <line x1="608" y1="232" x2="732" y2="232" stroke="#6b6a6b" stroke-width="1.2" marker-end="url(#ss-arrow)"/>
+
+      <!-- designProblem → design -->
+      <line x1="608" y1="504" x2="732" y2="504" stroke="#6b6a6b" stroke-width="1.2" marker-end="url(#ss-arrow)"/>
+
+      <!-- occlusion, NOT a transition: the design board covers the coding panel -->
+      <line x1="824" y1="444" x2="824" y2="292" stroke="#7a797a" stroke-width="1" stroke-dasharray="5,4"/>
+
+      <!-- ══ TRANSITION LABELS ══ -->
+
+      <rect x="240" y="272" width="120" height="16" rx="2" fill="#fdfdfd"/>
+      <text x="300" y="284" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">QUESTION SHOWN</text>
+
+      <rect x="272" y="420" width="120" height="16" rx="2" fill="#fdfdfd"/>
+      <text x="332" y="432" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">DESIGN PROMPT</text>
+
+      <rect x="612" y="208" width="112" height="16" rx="2" fill="#fdfdfd"/>
+      <text x="668" y="220" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">CLICK SOLVE IT</text>
+
+      <rect x="620" y="480" width="96" height="16" rx="2" fill="#fdfdfd"/>
+      <text x="668" y="492" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">BOARD OPENS</text>
+
+      <!-- occlusion label, to the side of the dashed line with a 12px gap -->
+      <rect x="836" y="340" width="112" height="40" rx="2" fill="#fdfdfd"/>
+      <text x="840" y="358" fill="#7a797a" font-size="12" font-family="'Geist Mono', monospace" letter-spacing="0.06em">COVERS THE</text>
+      <text x="840" y="374" fill="#7a797a" font-size="12" font-family="'Geist Mono', monospace" letter-spacing="0.06em">IDE PANEL</text>
+
+      <!-- ══ START MARKER ══ -->
+      <circle cx="72" cy="360" r="6" fill="#282728"/>
+
+      <!-- ══ STATES ══ -->
+
+      <!-- none -->
+      <rect x="128" y="304" width="176" height="112" rx="8" fill="#fdfdfd"/>
+      <rect x="128" y="304" width="176" height="112" rx="8" fill="#ffffff" stroke="#282728" stroke-width="1"/>
+      <rect x="140" y="316" width="24" height="20" rx="2" fill="rgba(40,39,40,0.05)" stroke="rgba(40,39,40,0.30)" stroke-width="0.8"/>
+      <text x="152" y="331" fill="#282728" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">5</text>
+      <text x="172" y="331" fill="#7a797a" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">PROBE</text>
+      <text x="216" y="372" fill="#282728" font-size="16" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">none</text>
+      <text x="216" y="396" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">nothing matched</text>
+
+      <!-- problem -->
+      <rect x="432" y="176" width="176" height="112" rx="8" fill="#fdfdfd"/>
+      <rect x="432" y="176" width="176" height="112" rx="8" fill="#ffffff" stroke="#282728" stroke-width="1"/>
+      <rect x="444" y="188" width="24" height="20" rx="2" fill="rgba(40,39,40,0.05)" stroke="rgba(40,39,40,0.30)" stroke-width="0.8"/>
+      <text x="456" y="203" fill="#282728" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">3</text>
+      <text x="476" y="203" fill="#7a797a" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">PROBE</text>
+      <text x="520" y="244" fill="#282728" font-size="16" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">problem</text>
+      <text x="520" y="268" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">“Solve it” visible</text>
+
+      <!-- ide -->
+      <rect x="736" y="176" width="176" height="112" rx="8" fill="#fdfdfd"/>
+      <rect x="736" y="176" width="176" height="112" rx="8" fill="#ffffff" stroke="#282728" stroke-width="1"/>
+      <rect x="748" y="188" width="24" height="20" rx="2" fill="rgba(40,39,40,0.05)" stroke="rgba(40,39,40,0.30)" stroke-width="0.8"/>
+      <text x="760" y="203" fill="#282728" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">2</text>
+      <text x="780" y="203" fill="#7a797a" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">PROBE</text>
+      <text x="824" y="244" fill="#282728" font-size="16" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">ide</text>
+      <text x="824" y="268" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">“Run” visible</text>
+
+      <!-- designProblem — FOCAL: probed fourth, after both coding states -->
+      <rect x="432" y="448" width="176" height="112" rx="8" fill="#fdfdfd"/>
+      <rect x="432" y="448" width="176" height="112" rx="8" fill="rgba(0,108,172,0.08)" stroke="#006cac" stroke-width="1.2"/>
+      <rect x="444" y="460" width="24" height="20" rx="2" fill="rgba(0,108,172,0.10)" stroke="rgba(0,108,172,0.50)" stroke-width="0.8"/>
+      <text x="456" y="475" fill="#006cac" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">4</text>
+      <text x="476" y="475" fill="#006cac" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">PROBE</text>
+      <text x="520" y="516" fill="#282728" font-size="16" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">designProblem</text>
+      <text x="520" y="540" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">panel, no “Solve it”</text>
+
+      <!-- design -->
+      <rect x="736" y="448" width="176" height="112" rx="8" fill="#fdfdfd"/>
+      <rect x="736" y="448" width="176" height="112" rx="8" fill="#ffffff" stroke="#282728" stroke-width="1"/>
+      <rect x="748" y="460" width="24" height="20" rx="2" fill="rgba(40,39,40,0.05)" stroke="rgba(40,39,40,0.30)" stroke-width="0.8"/>
+      <text x="760" y="475" fill="#282728" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">1</text>
+      <text x="780" y="475" fill="#7a797a" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">PROBE</text>
+      <text x="824" y="516" fill="#282728" font-size="16" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">design</text>
+      <text x="824" y="540" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace" text-anchor="middle">canvas visible</text>
+
+      <!-- ══ EDITORIAL CALLOUTS (2 max) ══ -->
+
+      <!-- 1. the DOM re-read -->
+      <path d="M 292,136 Q 258,204 216,296" fill="none" stroke="rgba(40,39,40,0.40)" stroke-width="1" stroke-dasharray="4,3"/>
+      <circle cx="216" cy="300" r="2" fill="#282728"/>
+      <text x="64" y="100" fill="#282728" font-size="16" font-style="italic" font-family="'Instrument Serif', serif">The state is re-derived from the live DOM</text>
+      <text x="64" y="124" fill="#282728" font-size="16" font-style="italic" font-family="'Instrument Serif', serif">before every tool returns. Nothing is stored.</text>
+
+      <!-- 2. the unreachable state -->
+      <path d="M 688,596 Q 656,586 612,568" fill="none" stroke="rgba(0,108,172,0.50)" stroke-width="1" stroke-dasharray="4,3"/>
+      <circle cx="608" cy="560" r="2" fill="#006cac"/>
+      <text x="64" y="604" fill="#282728" font-size="16" font-style="italic" font-family="'Instrument Serif', serif">designProblem is probed fourth &mdash; after both coding states &mdash; so a coding-only interview can never report it.</text>
+
+      <!-- ══ LEGEND ══ -->
+      <line x1="40" y1="648" x2="1240" y2="648" stroke="rgba(40,39,40,0.12)" stroke-width="0.8"/>
+
+      <text x="40" y="676" fill="#7a797a" font-size="12" font-family="'Geist Mono', monospace" letter-spacing="0.14em">LEGEND</text>
+      <line x1="144" y1="672" x2="176" y2="672" stroke="#6b6a6b" stroke-width="1.2"/>
+      <text x="184" y="676" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace">transition</text>
+      <line x1="344" y1="672" x2="376" y2="672" stroke="#7a797a" stroke-width="1" stroke-dasharray="5,4"/>
+      <text x="384" y="676" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace">occlusion, not a transition</text>
+      <rect x="744" y="664" width="32" height="16" rx="2" fill="rgba(0,108,172,0.08)" stroke="#006cac" stroke-width="1"/>
+      <text x="784" y="676" fill="#006cac" font-size="12" font-family="'Geist Mono', monospace">unreachable in a coding-only interview</text>
+
+      <text x="40" y="708" fill="#7a797a" font-size="12" font-family="'Geist Mono', monospace" letter-spacing="0.14em">PROBE ORDER</text>
+      <text x="184" y="708" fill="#6b6a6b" font-size="12" font-family="'Geist Mono', monospace">1 design → 2 ide → 3 problem → 4 designProblem → 5 none · first match wins</text>
+    </svg>
+  </div>
+</body>
+</html>
