@@ -1,0 +1,33 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300;0,400;0,500;0,700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1200px;height:630px;background:#fdfdfd;font-family:'Google Sans Code',ui-monospace,monospace;color:#282728;
+ display:flex;flex-direction:column;justify-content:space-between;padding:64px 72px;position:relative;overflow:hidden}
+/* faint grid, same spirit as the site's restraint */
+body::before{content:"";position:absolute;inset:0;
+ background-image:linear-gradient(rgba(40,39,40,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(40,39,40,.045) 1px,transparent 1px);
+ background-size:48px 48px;mask-image:radial-gradient(120% 90% at 100% 0%,#000 0%,transparent 72%)}
+.top{display:flex;align-items:center;gap:14px;position:relative}
+.dot{width:13px;height:13px;border-radius:50%;background:#006cac}
+.site{font-size:22px;font-weight:500;letter-spacing:.04em;color:#5b5a5b}
+h1{position:relative;font-size:62px;line-height:1.14;font-weight:700;letter-spacing:-.02em;max-width:980px}
+h1 .hl{color:#006cac}
+.rule{position:relative;width:104px;height:5px;background:#006cac;margin-top:30px}
+.bottom{display:flex;justify-content:space-between;align-items:flex-end;position:relative}
+.who{font-size:25px;font-weight:500}
+.who span{display:block;font-size:19px;font-weight:300;color:#5b5a5b;margin-top:7px}
+.url{font-size:20px;color:#5b5a5b;font-weight:400}
+</style></head>
+<body>
+  <div class="top"><div class="dot"></div><div class="site">qacraft</div></div>
+  <div>
+    <h1>Testing systems that don&rsquo;t<br>behave the same way <span class="hl">twice</span>.</h1>
+    <div class="rule"></div>
+  </div>
+  <div class="bottom">
+    <div class="who">Chaitanya Krishna<span>SDET — flaky browsers, parallel workers, LLM judges</span></div>
+    <div class="url">qacraft.vercel.app</div>
+  </div>
+</body></html>
